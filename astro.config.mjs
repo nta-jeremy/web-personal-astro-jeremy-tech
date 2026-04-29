@@ -6,7 +6,7 @@ import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://jeremynguyen.dev',
+  site: 'https://jeremytech.io.vn',
   output: 'static',
   adapter: cloudflare({
     mode: 'directory',
