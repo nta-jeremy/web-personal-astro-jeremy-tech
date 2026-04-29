@@ -1,0 +1,9 @@
+name = "jeremy-portfolio"
+compatibility_date = "2026-04-23"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./dist"

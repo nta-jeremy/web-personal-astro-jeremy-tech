@@ -1,0 +1,86 @@
+---
+export interface Props {
+  schema: 'person' | 'article' | 'website' | 'webpage';
+  data?: Record<string, unknown>;
+}
+
+const { schema, data = {} } = Astro.props;
+
+const site = 'https://jeremynguyen.dev';
+
+function buildPersonSchema(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: (data.name as string) || 'Jeremy Nguyen',
+    jobTitle: (data.jobTitle as string) || 'Software Engineer',
+    url: site,
+    sameAs: (data.sameAs as string[]) || [
+      'https://github.com/jeremynguyen',
+      'https://linkedin.com/in/jeremynguyen',
+    ],
+    ...data,
+  };
+}
+
+function buildArticleSchema(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: (data.headline as string) || 'Article',
+    author: {
+      '@type': 'Person',
+      name: (data.author as string) || 'Jeremy Nguyen',
+    },
+    datePublished: (data.datePublished as string) || new Date().toISOString(),
+    dateModified:
+      (data.dateModified as string) ||
+      (data.datePublished as string) ||
+      new Date().toISOString(),
+    ...data,
+  };
+}
+
+function buildWebsiteSchema(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: (data.name as string) || 'Jeremy Nguyen',
+    url: site,
+    ...data,
+  };
+}
+
+function buildWebPageSchema(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: (data.name as string) || 'Jeremy Nguyen',
+    url: (data.url as string) || site,
+    ...data,
+  };
+}
+
+let structuredData: Record<string, unknown>;
+
+switch (schema) {
+  case 'person':
+    structuredData = buildPersonSchema();
+    break;
+  case 'article':
+    structuredData = buildArticleSchema();
+    break;
+  case 'website':
+    structuredData = buildWebsiteSchema();
+    break;
+  case 'webpage':
+    structuredData = buildWebPageSchema();
+    break;
+  default:
+    structuredData = buildWebsiteSchema();
+}
+
+const json = JSON.stringify(structuredData);
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

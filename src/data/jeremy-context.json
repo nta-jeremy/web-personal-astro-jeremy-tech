@@ -1,0 +1,71 @@
+{
+  "name": "Jeremy Nguyen",
+  "title": "CTO & AI Builder",
+  "bio": "Jeremy Nguyen is a CTO and AI builder with deep expertise in neural architectures, distributed systems, and developer experience. He designs and ships AI-native products while consulting on system architecture for high-growth teams.",
+  "philosophy": "Build lean, ship fast, and let systems evolve through constraint. Jeremy believes the best engineering happens at the intersection of deep technical rigor and ruthless product focus. He favors event-driven architectures, functional programming patterns, and tooling that removes friction from the developer workflow.",
+  "career": [
+    {
+      "year": "2024",
+      "role": "CTO & Founder",
+      "summary": "Building AI-native products and consulting on system architecture."
+    },
+    {
+      "year": "2021",
+      "role": "Principal Engineer",
+      "summary": "Led platform migration to event-driven microservices at scale."
+    },
+    {
+      "year": "2018",
+      "role": "Engineering Lead",
+      "summary": "Built and grew a 20-person engineering team from scratch."
+    },
+    {
+      "year": "2015",
+      "role": "Senior Developer",
+      "summary": "Full-stack development with focus on real-time data systems."
+    }
+  ],
+  "domains": [
+    "Neural Architectures",
+    "Interface Semantics",
+    "Distributed Systems",
+    "AI/ML",
+    "Cloud Infrastructure",
+    "Developer Experience"
+  ],
+  "projects": [
+    {
+      "title": "Distributed Task Orchestrator",
+      "description": "A fault-tolerant task scheduler built for microservices at scale. Handles retries, dead-letter queues, and observability out of the box.",
+      "tech": ["Go", "Redis", "PostgreSQL", "gRPC", "Prometheus"],
+      "liveUrl": "https://orchestrator.example.com",
+      "repoUrl": "https://github.com/jeremynguyen/task-orchestrator"
+    },
+    {
+      "title": "AI Research Assistant",
+      "description": "An LLM-powered research tool that synthesizes academic papers, generates summaries, and surfaces relevant citations in real time.",
+      "tech": ["Python", "FastAPI", "OpenAI", "PostgreSQL", "React"],
+      "liveUrl": "https://research-ai.example.com",
+      "repoUrl": "https://github.com/jeremynguyen/ai-research-assistant"
+    },
+    {
+      "title": "Real-time Collaborative Editor",
+      "description": "A multiplayer text editor with operational transforms, cursor presence, and conflict-free replication for distributed teams.",
+      "tech": ["TypeScript", "Node.js", "WebSockets", "Yjs", "Redis"],
+      "liveUrl": "https://collab-editor.example.com",
+      "repoUrl": "https://github.com/jeremynguyen/collab-editor"
+    },
+    {
+      "title": "Personal Portfolio",
+      "description": "Jeremy's personal portfolio website built with Astro, Tailwind CSS, and React. Features bilingual support, dark mode, and an AI chat assistant.",
+      "tech": ["Astro", "Tailwind CSS", "React"],
+      "liveUrl": "https://jeremynguyen.tech",
+      "repoUrl": "https://github.com/jeremynguyen/portfolio"
+    }
+  ],
+  "contact": {
+    "website": "https://jeremynguyen.tech",
+    "github": "https://github.com/jeremynguyen",
+    "location": "Global / Remote"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "domains": [
+    "Kiến trúc Neural",
+    "Ngữ nghĩa Giao diện",
+    "Công nghệ Sổ cái Phân tán",
+    "Hệ thống Thiết kế Biên tập",
+    "Kỹ thuật Prompt",
+    "Lý thuyết Đồ thị",
+    "Nhân trắc học Nhận thức"
+  ],
+  "timeline": [
+    {
+      "year": "2024",
+      "title": "CTO & Founder",
+      "desc": "Xây dựng các sản phẩm AI-native và tư vấn kiến trúc hệ thống."
+    },
+    {
+      "year": "2021",
+      "title": "Principal Engineer",
+      "desc": "Dẫn dắt migration nền tảng sang microservices dựa trên sự kiện."
+    },
+    {
+      "year": "2018",
+      "title": "Engineering Lead",
+      "desc": "Xây dựng và phát triển nhóm kỹ thuật 20 người từ con số 0."
+    },
+    {
+      "year": "2015",
+      "title": "Senior Developer",
+      "desc": "Phát triển full-stack với trọng tâm là hệ thống dữ liệu thời gian thực."
+    }
+  ]
+}

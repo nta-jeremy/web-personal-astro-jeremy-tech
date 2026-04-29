@@ -1,0 +1,62 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  noindex?: boolean;
+  canonicalUrl?: string;
+  hreflang?: Array<{ lang: string; url: string }>;
+}
+
+const {
+  title,
+  description = 'Personal portfolio of Jeremy Nguyen',
+  image = '/og-default.svg',
+  type = 'website',
+  noindex = false,
+  canonicalUrl,
+  hreflang = [],
+} = Astro.props;
+
+const { pathname } = Astro.url;
+const site = 'https://jeremynguyen.dev';
+const canonical = canonicalUrl || `${site}${pathname}`;
+const ogImage = image.startsWith('http') ? image : `${site}${image}`;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<link rel="canonical" href={canonical} />
+
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="Jeremy Nguyen" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Hreflang alternates -->
+{
+  hreflang.map(({ lang, url }) => (
+    <link rel="alternate" hreflang={lang} href={url} />
+  ))
+}

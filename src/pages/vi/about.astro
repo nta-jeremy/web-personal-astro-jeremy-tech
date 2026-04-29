@@ -1,0 +1,43 @@
+---
+import Layout from '@layouts/BaseLayout.astro';
+import { getTranslations, t } from '@/i18n/utils';
+import aboutData from '@/data/about-vi.json';
+import careerData from '@/data/career-vi.json';
+import AboutBio from '@components/sections/AboutBio.astro';
+import AboutPhilosophy from '@components/sections/AboutPhilosophy.astro';
+import AboutDomains from '@components/sections/AboutDomains.astro';
+import AboutTimeline from '@components/sections/AboutTimeline.astro';
+
+const locale = Astro.currentLocale || 'vi';
+const translations = getTranslations(locale as 'en' | 'vi');
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Jeremy Nguyen',
+  jobTitle: 'CTO · AI Builder',
+  url: 'https://jeremynguyen.dev',
+  sameAs: [
+    'https://github.com/jeremynguyen',
+    'https://linkedin.com/in/jeremynguyen',
+    'https://x.com/jeremynguyen',
+  ],
+};
+---
+
+<Layout title={t(translations, 'about.title')}>
+  <div class="artifact about-page">
+    <AboutBio translations={translations} />
+    <AboutPhilosophy translations={translations} />
+    <AboutDomains translations={translations} domains={aboutData.domains} />
+    <AboutTimeline translations={translations} timeline={careerData.timeline} />
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+</Layout>
+
+<style>
+  .about-page {
+    padding-top: 8px;
+  }
+</style>

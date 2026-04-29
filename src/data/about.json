@@ -1,0 +1,33 @@
+{
+  "domains": [
+    "Neural Architectures",
+    "Interface Semantics",
+    "Distributed Ledger Tech",
+    "Editorial Design Systems",
+    "Prompt Engineering",
+    "Graph Theory",
+    "Cognitive Ergonomics"
+  ],
+  "timeline": [
+    {
+      "year": "2024",
+      "title": "CTO & Founder",
+      "desc": "Building AI-native products and consulting on system architecture."
+    },
+    {
+      "year": "2021",
+      "title": "Principal Engineer",
+      "desc": "Led platform migration to event-driven microservices at scale."
+    },
+    {
+      "year": "2018",
+      "title": "Engineering Lead",
+      "desc": "Built and grew a 20-person engineering team from scratch."
+    },
+    {
+      "year": "2015",
+      "title": "Senior Developer",
+      "desc": "Full-stack development with focus on real-time data systems."
+    }
+  ]
+}

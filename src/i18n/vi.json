@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "about": "Giới thiệu",
+    "projects": "Dự án",
+    "blog": "Blog",
+    "contact": "Liên hệ"
+  },
+  "theme": {
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Tự động"
+  },
+  "home": {
+    "status": "ĐANG ONLINE",
+    "title": "Xin chào, mình là Jeremy.",
+    "subtitle": "Một CTO và người xây dựng AI, làm việc trên ranh giới giữa hệ thống phân tán và nhận thức con người. Mình viết, ship sản phẩm, và thỉnh thoảng xuất bản bài luận từ xưởng của mình.",
+    "ctaEssays": "Đọc bài luận",
+    "ctaEssaysDesc": "28 bài về hệ thống & nghề",
+    "ctaWork": "Xem dự án",
+    "ctaWorkDesc": "12 dự án đã ship",
+    "ctaAbout": "Về Jeremy",
+    "ctaAboutDesc": "Tiểu sử, lộ trình, công nghệ",
+    "ctaContact": "Bắt đầu cuộc trò chuyện",
+    "ctaContactDesc": "Luôn chào đón hợp tác",
+    "latestArtifact": "TÁC PHẨM MỚI NHẤT",
+    "latestRead": "Đọc bài"
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "label": "KIẾN TRÚC SƯ NHẬN THỨC",
+    "heading": "Thiết kế các hệ thống cùng suy nghĩ với con người.",
+    "bio1": "Jeremy Nguyen là một kỹ sư hệ thống trở thành người số hóa. Công việc của anh khám phá ranh giới mong manh giữa hiệu quả tính toán và thực tế hỗn loạn, đẹp đẽ của nhận thức con người. Dựa trên giao điểm của kỹ thuật và thiết kế biên tập.",
+    "bio2": "Trong thập kỷ qua, mình tập trung vào việc xây dựng \"Các Hiện vật Nhận thức\" — những công cụ không chỉ giải quyết vấn đề, mà còn mở rộng khả năng tư duy của người dùng. Cách tiếp cận của mình coi code như một phương tiện số hóa.",
+    "philosophyLabel": "TRIẾT LÝ",
+    "philosophyQuote": "Mỗi dòng code là một nét vẽ trong bức chân dung lớn hơn về tiến bộ của nhân loại.",
+    "domainsLabel": "LĨNH VỰC KỸ THUẬT",
+    "timelineLabel": "LỘ TRÌNH SỰ NGHIỆP",
+    "timeline": [
+      { "year": "2024", "title": "CTO & Founder", "desc": "Xây dựng các sản phẩm AI-native và tư vấn kiến trúc hệ thống." },
+      { "year": "2021", "title": "Principal Engineer", "desc": "Dẫn dắt migration nền tảng sang microservices dựa trên sự kiện." },
+      { "year": "2018", "title": "Engineering Lead", "desc": "Xây dựng và phát triển nhóm kỹ thuật 20 người từ con số 0." },
+      { "year": "2015", "title": "Senior Developer", "desc": "Phát triển full-stack với trọng tâm là hệ thống dữ liệu thời gian thực." }
+    ]
+  },
+  "projects": {
+    "label": "DANH MỤC · KHO LƯU TRỮ 2026",
+    "heading": "Các Tác Phẩm Chọn Lọc",
+    "subtitle": "Bộ sưu tập được chọn lọc từ các dự án đã ship, thử nghiệm và khám phá kỹ thuật.",
+    "featured": "Nổi bật"
+  },
+  "blog": {
+    "title": "Bài Luận & Tác Phẩm",
+    "archiveLabel": "KHO LƯU TRỮ",
+    "heading": "Bài Luận & Tác Phẩm",
+    "subtitle": "Viết về hệ thống, nghề thủ công và triết lý công nghệ.",
+    "backToArchive": "Quay lại kho",
+    "readingTime": "phút đọc",
+    "prevPost": "Bài trước",
+    "nextPost": "Bài tiếp",
+    "draft": "Bản nháp",
+    "searchPlaceholder": "Tìm kiếm bài viết..."
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "heading": "Bắt Đầu Cuộc Trò Chuyện",
+    "subtitle": "Dù bạn muốn hợp tác, thảo luận ý tưởng, hay chỉ để chào hỏi — hộp thư của mình luôn mở.",
+    "emailLabel": "Email",
+    "socialLabel": "Kết nối",
+    "copyEmail": "Sao chép email",
+    "emailCopied": "Đã sao chép!"
+  },
+  "chat": {
+    "placeholder": "Hỏi bất cứ điều gì về công việc của mình…",
+    "send": "Gửi",
+    "greeting": "Xin chào, mình có thể giúp gì cho bạn?",
+    "thinking": "Đang suy nghĩ...",
+    "error": "Xin lỗi, có lỗi xảy ra. Vui lòng thử lại.",
+    "offline": "Mình đang ngoại tuyến. Để lại tin nhắn và mình sẽ phản hồi sớm."
+  },
+  "footer": {
+    "copyright": "Jeremy Nguyen. Bảo lưu mọi quyền."
+  },
+  "meta": {
+    "siteName": "Jeremy Nguyen",
+    "siteDescription": "Portfolio cá nhân của Jeremy Nguyen"
+  },
+  "mobile": {
+    "navAbout": "Giới thiệu",
+    "navProjects": "Dự án",
+    "navBlog": "Blog",
+    "navContact": "Liên hệ"
+  },
+  "sidebar": {
+    "name": "Jeremy Nguyen",
+    "title": "CTO · AI Builder",
+    "settings": "Cài đặt",
+    "support": "Hỗ trợ"
+  }
+}

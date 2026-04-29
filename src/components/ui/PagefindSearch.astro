@@ -1,0 +1,76 @@
+---
+export interface Props {
+  locale?: 'en' | 'vi';
+}
+
+const { locale = 'en' } = Astro.props;
+const placeholder = locale === 'vi' ? 'Tìm kiếm bài viết...' : 'Search articles...';
+---
+
+<div class="pagefind-search-wrapper">
+  <div class="search-icon">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+  </div>
+  <input
+    type="search"
+    class="pagefind-search-input"
+    placeholder={placeholder}
+    data-pagefind-search
+    aria-label={placeholder}
+  />
+</div>
+
+<style>
+  .pagefind-search-wrapper {
+    position: relative;
+    margin-bottom: 28px;
+    max-width: 440px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--subtle);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  .search-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .pagefind-search-input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: 1px solid var(--border-2);
+    border-radius: 10px;
+    background: var(--bg-alt);
+    color: var(--ink);
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .pagefind-search-input::placeholder {
+    color: var(--subtle);
+  }
+
+  .pagefind-search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--ring);
+  }
+</style>

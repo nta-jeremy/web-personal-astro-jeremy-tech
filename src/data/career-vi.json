@@ -1,0 +1,24 @@
+{
+  "timeline": [
+    {
+      "year": "2024 — HIỆN TẠI",
+      "title": "Giám đốc Công nghệ",
+      "desc": "Dẫn dắt nghiên cứu AI và hạ tầng tại Artifact Labs, định hình tương lai của giao diện nhận thức."
+    },
+    {
+      "year": "2021 — 2023",
+      "title": "Phó Chủ tịch Kỹ thuật",
+      "desc": "Mở rộng hệ thống phân tán cho fintech tăng trưởng nhanh, quản lý nhóm 40+ kỹ sư."
+    },
+    {
+      "year": "2018 — 2021",
+      "title": "Kiến trúc sư Hệ thống",
+      "desc": "Thiết kế kiến trúc backend hiện đại cho nền tảng logistics chuỗi cung ứng toàn cầu bằng Rust."
+    },
+    {
+      "year": "2015 — 2018",
+      "title": "Kỹ sư Phần mềm Cao cấp",
+      "desc": "Xây dựng công cụ và hạ tầng cho hệ thống suy luận ML giai đoạn đầu."
+    }
+  ]
+}

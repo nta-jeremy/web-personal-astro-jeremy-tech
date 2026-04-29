@@ -1,0 +1,37 @@
+---
+import Layout from '@layouts/BaseLayout.astro';
+import { getTranslations, t } from '@/i18n/utils';
+import ConversationUI from '@components/islands/ConversationUI';
+
+const locale = Astro.currentLocale || 'en';
+const translations = getTranslations(locale as 'en' | 'vi');
+---
+
+<Layout title={t(translations, 'contact.title')} description={t(translations, 'contact.subtitle')}>
+  <div class="artifact contact-page">
+    <h1
+      class="serif"
+      style="font-size: 44px; font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 14px;"
+    >
+      {t(translations, 'contact.heading')}
+    </h1>
+
+    <p style="font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0 0 40px; max-width: 440px;">
+      {t(translations, 'contact.subtitle')}
+    </p>
+
+    <ConversationUI client:load locale={locale as 'en' | 'vi'} />
+  </div>
+</Layout>
+
+<style>
+  .contact-page {
+    padding-top: 8px;
+    position: relative;
+  }
+  @media (max-width: 1100px) {
+    .contact-sidebar {
+      display: none !important;
+    }
+  }
+</style>

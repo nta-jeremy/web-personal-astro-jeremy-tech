@@ -1,0 +1,12 @@
+---
+import DesktopChatWidget from '@components/islands/DesktopChatWidget';
+
+export interface Props {
+  placeholder?: string;
+  locale?: 'en' | 'vi';
+}
+
+const { placeholder = "Ask anything about my work…", locale = 'en' } = Astro.props;
+---
+
+<DesktopChatWidget client:load placeholder={placeholder} locale={locale} />

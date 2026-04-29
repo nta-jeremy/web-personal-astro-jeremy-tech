@@ -1,0 +1,114 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import '@/styles/global.css';
+import BaseHead from '@components/seo/BaseHead.astro';
+import Sidebar from '@components/ui/Sidebar.astro';
+import ChatBar from '@components/ui/ChatBar.astro';
+import MobileHeader from '@components/islands/MobileHeader';
+import MobileNav from '@components/ui/MobileNav.astro';
+import MobileChat from '@components/islands/MobileChat';
+import ScrollToTop from '@components/ui/ScrollToTop.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const { title, description = 'Personal portfolio of Jeremy Nguyen', image, noindex } = Astro.props;
+
+const { pathname } = Astro.url;
+const isVi = pathname.startsWith('/vi');
+const lang = isVi ? 'vi' : 'en';
+const site = 'https://jeremynguyen.dev';
+const canonical = `${site}${pathname}`;
+const canonicalEn = `${site}${pathname.replace(/^\/vi/, '') || '/'}`;
+const canonicalVi = `${site}${getRelativeLocaleUrl('vi', pathname.replace(/^\/vi/, '') || '/')}`;
+
+const hreflang = [
+  { lang: 'en', url: canonicalEn },
+  { lang: 'vi', url: canonicalVi },
+  { lang: 'x-default', url: canonicalEn },
+];
+---
+
+<!doctype html>
+<html lang={lang} transition:animate="none">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      canonicalUrl={canonical}
+      hreflang={hreflang}
+      noindex={noindex}
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- FOUC prevention: apply theme before first paint -->
+    <script is:inline>
+      (function() {
+        var theme = localStorage.getItem('theme') || 'system';
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var resolved = theme === 'dark' || (theme === 'system' && prefersDark) ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', resolved);
+
+        window.theme = {
+          get: function() { return localStorage.getItem('theme') || 'system'; },
+          set: function(t) {
+            localStorage.setItem('theme', t);
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var resolved = t === 'dark' || (t === 'system' && prefersDark) ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', resolved);
+            window.theme._listeners.forEach(function(fn) { fn(t); });
+          },
+          listen: function(fn) { window.theme._listeners.push(fn); },
+          _listeners: []
+        };
+      })();
+    </script>
+
+    <!-- Re-apply theme after ClientRouter swaps -->
+    <script is:inline>
+      document.addEventListener('astro:after-swap', function() {
+        var theme = localStorage.getItem('theme') || 'system';
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var resolved = theme === 'dark' || (theme === 'system' && prefersDark) ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', resolved);
+      });
+    </script>
+
+    <ClientRouter />
+  </head>
+  <body>
+    <!-- Desktop + Mobile unified frame -->
+    <div class="frame">
+      <Sidebar />
+
+      <div class="main">
+        <!-- Mobile top bar (hidden on desktop) -->
+        <MobileHeader client:load />
+
+        <!-- Scrollable main content -->
+        <div class="main-scroll">
+          <slot />
+        </div>
+
+        <!-- Desktop chatbar (hidden on mobile) -->
+        <div class="hidden md:block">
+          <ChatBar locale={lang} />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile overlays (outside frame so they position fixed correctly) -->
+    <div class="md:hidden">
+      <MobileChat client:load locale={lang} />
+      <MobileNav />
+    </div>
+
+    <ScrollToTop />
+  </body>
+</html>

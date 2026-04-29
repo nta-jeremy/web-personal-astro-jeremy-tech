@@ -1,0 +1,71 @@
+{
+  "name": "Jeremy Nguyen",
+  "title": "CTO & AI Builder",
+  "bio": "Jeremy Nguyen là một CTO và nhà xây dựng AI với chuyên môn sâu về kiến trúc neural, hệ thống phân tán, và trải nghiệm lập trình viên. Anh thiết kế và phát triển các sản phẩm AI-native đồng thời tư vấn kiến trúc hệ thống cho các nhóm tăng trưởng nhanh.",
+  "philosophy": "Xây dựng gọn nhẹ, triển khai nhanh, và để hệ thống tiến hóa thông qua ràng buộc. Jeremy tin rằng kỹ thuật tốt nhất xảy ra ở giao điểm của sự nghiêm ngặt kỹ thuật sâu và tập trung sản phẩm tuyệt đối. Anh ưu tiên kiến trúc hướng sự kiện, các pattern lập trình hàm, và công cụ loại bỏ ma sát trong quy trình làm việc của lập trình viên.",
+  "career": [
+    {
+      "year": "2024",
+      "role": "CTO & Founder",
+      "summary": "Xây dựng các sản phẩm AI-native và tư vấn kiến trúc hệ thống."
+    },
+    {
+      "year": "2021",
+      "role": "Principal Engineer",
+      "summary": "Dẫn dắt migration nền tảng sang microservices dựa trên sự kiện."
+    },
+    {
+      "year": "2018",
+      "role": "Engineering Lead",
+      "summary": "Xây dựng và phát triển nhóm kỹ thuật 20 người từ con số 0."
+    },
+    {
+      "year": "2015",
+      "role": "Senior Developer",
+      "summary": "Phát triển full-stack với trọng tâm là hệ thống dữ liệu thời gian thực."
+    }
+  ],
+  "domains": [
+    "Kiến trúc Neural",
+    "Ngữ nghĩa Giao diện",
+    "Hệ thống Phân tán",
+    "AI/ML",
+    "Hạ tầng Đám mây",
+    "Trải nghiệm Lập trình viên"
+  ],
+  "projects": [
+    {
+      "title": "Distributed Task Orchestrator",
+      "description": "Một bộ lập lịch tác vụ chịu lỗi được xây dựng cho microservices quy mô lớn. Xử lý retry, hàng đợi dead-letter, và khả năng quan sát tích hợp sẵn.",
+      "tech": ["Go", "Redis", "PostgreSQL", "gRPC", "Prometheus"],
+      "liveUrl": "https://orchestrator.example.com",
+      "repoUrl": "https://github.com/jeremynguyen/task-orchestrator"
+    },
+    {
+      "title": "AI Research Assistant",
+      "description": "Công cụ nghiên cứu dựa trên LLM tổng hợp các bài báo học thuật, tạo tóm tắt, và trích dẫn liên quan theo thời gian thực.",
+      "tech": ["Python", "FastAPI", "OpenAI", "PostgreSQL", "React"],
+      "liveUrl": "https://research-ai.example.com",
+      "repoUrl": "https://github.com/jeremynguyen/ai-research-assistant"
+    },
+    {
+      "title": "Real-time Collaborative Editor",
+      "description": "Trình soạn thảo văn bản multiplayer với operational transforms, hiển thị con trỏ trực tiếp, và đồng bộ không xung đột cho các nhóm phân tán.",
+      "tech": ["TypeScript", "Node.js", "WebSockets", "Yjs", "Redis"],
+      "liveUrl": "https://collab-editor.example.com",
+      "repoUrl": "https://github.com/jeremynguyen/collab-editor"
+    },
+    {
+      "title": "Personal Portfolio",
+      "description": "Trang portfolio cá nhân của Jeremy được xây dựng với Astro, Tailwind CSS, và React. Hỗ trợ song ngữ, chế độ tối, và trợ lý chat AI.",
+      "tech": ["Astro", "Tailwind CSS", "React"],
+      "liveUrl": "https://jeremynguyen.tech",
+      "repoUrl": "https://github.com/jeremynguyen/portfolio"
+    }
+  ],
+  "contact": {
+    "website": "https://jeremynguyen.tech",
+    "github": "https://github.com/jeremynguyen",
+    "location": "Global / Remote"
+  }
+}

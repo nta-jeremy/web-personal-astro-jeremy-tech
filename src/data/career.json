@@ -1,0 +1,24 @@
+{
+  "timeline": [
+    {
+      "year": "2024 — PRESENT",
+      "title": "Chief Technology Officer",
+      "desc": "Leading AI research and infrastructure at Artifact Labs, defining the future of cognitive interfaces."
+    },
+    {
+      "year": "2021 — 2023",
+      "title": "VP of Engineering",
+      "desc": "Scaled distributed systems for a high-growth fintech startup, managing a team of 40+ engineers."
+    },
+    {
+      "year": "2018 — 2021",
+      "title": "Lead Systems Architect",
+      "desc": "Designed modern backend architectures for global supply chain logistics platforms using Rust."
+    },
+    {
+      "year": "2015 — 2018",
+      "title": "Senior Software Engineer",
+      "desc": "Built tooling and infrastructure for early-stage ML inference systems."
+    }
+  ]
+}

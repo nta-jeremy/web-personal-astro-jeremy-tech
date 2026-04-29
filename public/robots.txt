@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jeremynguyen.dev/sitemap-index.xml

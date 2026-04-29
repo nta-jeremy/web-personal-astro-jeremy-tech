@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "Auto"
+  },
+  "home": {
+    "status": "CURRENTLY ONLINE",
+    "title": "Hi, I'm Jeremy.",
+    "subtitle": "A CTO and AI builder working on the seam between distributed systems and human cognition. I write, ship, and occasionally publish essays from my workshop.",
+    "ctaEssays": "Read the essays",
+    "ctaEssaysDesc": "28 pieces on systems & craft",
+    "ctaWork": "See the work",
+    "ctaWorkDesc": "12 shipped projects",
+    "ctaAbout": "About Jeremy",
+    "ctaAboutDesc": "Bio, chronology, stack",
+    "ctaContact": "Start a conversation",
+    "ctaContactDesc": "Collaborations welcome",
+    "latestArtifact": "LATEST ARTIFACT",
+    "latestRead": "Read essay"
+  },
+  "about": {
+    "title": "About",
+    "label": "COGNITIVE ARCHITECT",
+    "heading": "Designing systems that think alongside humans.",
+    "bio1": "Jeremy Nguyen is a systems engineer turned digital curator. His work explores the delicate boundary between computational efficiency and the messy, beautiful reality of human cognition. Based at the intersection of engineering and editorial design.",
+    "bio2": "For the past decade, I've focused on building \"Cognitive Artifacts\" — tools that don't just solve problems, but expand the user's capacity for thought. My approach treats code as a medium for curation.",
+    "philosophyLabel": "PHILOSOPHY",
+    "philosophyQuote": "Every line of code is a stroke in a larger portrait of human progress.",
+    "domainsLabel": "TECHNICAL DOMAINS",
+    "timelineLabel": "CAREER TRAJECTORY",
+    "timeline": [
+      { "year": "2024", "title": "CTO & Founder", "desc": "Building AI-native products and consulting on system architecture." },
+      { "year": "2021", "title": "Principal Engineer", "desc": "Led platform migration to event-driven microservices at scale." },
+      { "year": "2018", "title": "Engineering Lead", "desc": "Built and grew a 20-person engineering team from scratch." },
+      { "year": "2015", "title": "Senior Developer", "desc": "Full-stack development with focus on real-time data systems." }
+    ]
+  },
+  "projects": {
+    "label": "PORTFOLIO · ARCHIVE 2026",
+    "heading": "Selected Artifacts",
+    "subtitle": "A curated collection of shipped projects, experiments, and technical explorations.",
+    "featured": "Featured"
+  },
+  "blog": {
+    "title": "Essays & Artifacts",
+    "archiveLabel": "THE ARCHIVE",
+    "heading": "Thoughts on <em style=\"font-style: italic;\">Cognitive Architecture</em> and the Machine Era.",
+    "subtitle": "Writing on systems, craft, and the philosophy of technology.",
+    "backToArchive": "Back to archive",
+    "readingTime": "min read",
+    "prevPost": "Previous",
+    "nextPost": "Next",
+    "draft": "Draft",
+    "searchPlaceholder": "Search articles..."
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Start a Conversation",
+    "subtitle": "Whether you want to collaborate, discuss an idea, or just say hello — my inbox is open.",
+    "emailLabel": "Email",
+    "socialLabel": "Connect",
+    "copyEmail": "Copy email",
+    "emailCopied": "Copied!"
+  },
+  "chat": {
+    "placeholder": "Ask anything about my work…",
+    "send": "Send",
+    "greeting": "Hi, how can I help you?",
+    "thinking": "Thinking...",
+    "error": "Sorry, something went wrong. Please try again.",
+    "offline": "I'm offline right now. Leave a message and I'll get back to you."
+  },
+  "footer": {
+    "copyright": "Jeremy Nguyen. All rights reserved."
+  },
+  "meta": {
+    "siteName": "Jeremy Nguyen",
+    "siteDescription": "Personal portfolio of Jeremy Nguyen"
+  },
+  "mobile": {
+    "navAbout": "About",
+    "navProjects": "Projects",
+    "navBlog": "Blog",
+    "navContact": "Contact"
+  },
+  "sidebar": {
+    "name": "Jeremy Nguyen",
+    "title": "CTO · AI Builder",
+    "settings": "Settings",
+    "support": "Support"
+  }
+}
