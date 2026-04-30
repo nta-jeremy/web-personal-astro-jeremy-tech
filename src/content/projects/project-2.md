@@ -6,7 +6,7 @@ tech: ["Python", "FastAPI", "OpenAI", "PostgreSQL", "React"]
 featured: false
 categories: ["AI", "Web App"]
 liveUrl: "https://research-ai.example.com"
-repoUrl: "https://github.com/jeremynguyen/ai-research-assistant"
+repoUrl: "https://github.com/nta-jeremy/ai-research-assistant"
 image: "/project-placeholder-2.jpg"
 ---
 

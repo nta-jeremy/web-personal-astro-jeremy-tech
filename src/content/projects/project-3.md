@@ -6,7 +6,7 @@ tech: ["TypeScript", "Node.js", "WebSockets", "Yjs", "Redis"]
 featured: false
 categories: ["Web App", "DevTools"]
 liveUrl: "https://collab-editor.example.com"
-repoUrl: "https://github.com/jeremynguyen/collab-editor"
+repoUrl: "https://github.com/nta-jeremy/collab-editor"
 image: "/project-placeholder-3.jpg"
 ---
 

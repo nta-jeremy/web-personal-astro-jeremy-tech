@@ -39,33 +39,33 @@
       "description": "A fault-tolerant task scheduler built for microservices at scale. Handles retries, dead-letter queues, and observability out of the box.",
       "tech": ["Go", "Redis", "PostgreSQL", "gRPC", "Prometheus"],
       "liveUrl": "https://orchestrator.example.com",
-      "repoUrl": "https://github.com/jeremynguyen/task-orchestrator"
+      "repoUrl": "https://github.com/nta-jeremy/task-orchestrator"
     },
     {
       "title": "AI Research Assistant",
       "description": "An LLM-powered research tool that synthesizes academic papers, generates summaries, and surfaces relevant citations in real time.",
       "tech": ["Python", "FastAPI", "OpenAI", "PostgreSQL", "React"],
       "liveUrl": "https://research-ai.example.com",
-      "repoUrl": "https://github.com/jeremynguyen/ai-research-assistant"
+      "repoUrl": "https://github.com/nta-jeremy/ai-research-assistant"
     },
     {
       "title": "Real-time Collaborative Editor",
       "description": "A multiplayer text editor with operational transforms, cursor presence, and conflict-free replication for distributed teams.",
       "tech": ["TypeScript", "Node.js", "WebSockets", "Yjs", "Redis"],
       "liveUrl": "https://collab-editor.example.com",
-      "repoUrl": "https://github.com/jeremynguyen/collab-editor"
+      "repoUrl": "https://github.com/nta-jeremy/collab-editor"
     },
     {
       "title": "Personal Portfolio",
       "description": "Jeremy's personal portfolio website built with Astro, Tailwind CSS, and React. Features bilingual support, dark mode, and an AI chat assistant.",
       "tech": ["Astro", "Tailwind CSS", "React"],
       "liveUrl": "https://jeremynguyen.tech",
-      "repoUrl": "https://github.com/jeremynguyen/portfolio"
+      "repoUrl": "https://github.com/nta-jeremy/portfolio"
     }
   ],
   "contact": {
     "website": "https://jeremynguyen.tech",
-    "github": "https://github.com/jeremynguyen",
+    "github": "https://github.com/nta-jeremy",
     "location": "Global / Remote"
   }
 }

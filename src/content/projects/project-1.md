@@ -7,7 +7,7 @@ tech: ["Go", "Redis", "PostgreSQL", "gRPC", "Prometheus"]
 featured: true
 categories: ["Infrastructure"]
 liveUrl: "https://orchestrator.example.com"
-repoUrl: "https://github.com/jeremynguyen/task-orchestrator"
+repoUrl: "https://github.com/nta-jeremy/task-orchestrator"
 image: "/project-placeholder-1.jpg"
 ---
 

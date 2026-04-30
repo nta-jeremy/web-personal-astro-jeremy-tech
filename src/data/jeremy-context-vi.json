@@ -39,33 +39,33 @@
       "description": "Một bộ lập lịch tác vụ chịu lỗi được xây dựng cho microservices quy mô lớn. Xử lý retry, hàng đợi dead-letter, và khả năng quan sát tích hợp sẵn.",
       "tech": ["Go", "Redis", "PostgreSQL", "gRPC", "Prometheus"],
       "liveUrl": "https://orchestrator.example.com",
-      "repoUrl": "https://github.com/jeremynguyen/task-orchestrator"
+      "repoUrl": "https://github.com/nta-jeremy/task-orchestrator"
     },
     {
       "title": "AI Research Assistant",
       "description": "Công cụ nghiên cứu dựa trên LLM tổng hợp các bài báo học thuật, tạo tóm tắt, và trích dẫn liên quan theo thời gian thực.",
       "tech": ["Python", "FastAPI", "OpenAI", "PostgreSQL", "React"],
       "liveUrl": "https://research-ai.example.com",
-      "repoUrl": "https://github.com/jeremynguyen/ai-research-assistant"
+      "repoUrl": "https://github.com/nta-jeremy/ai-research-assistant"
     },
     {
       "title": "Real-time Collaborative Editor",
       "description": "Trình soạn thảo văn bản multiplayer với operational transforms, hiển thị con trỏ trực tiếp, và đồng bộ không xung đột cho các nhóm phân tán.",
       "tech": ["TypeScript", "Node.js", "WebSockets", "Yjs", "Redis"],
       "liveUrl": "https://collab-editor.example.com",
-      "repoUrl": "https://github.com/jeremynguyen/collab-editor"
+      "repoUrl": "https://github.com/nta-jeremy/collab-editor"
     },
     {
       "title": "Personal Portfolio",
       "description": "Trang portfolio cá nhân của Jeremy được xây dựng với Astro, Tailwind CSS, và React. Hỗ trợ song ngữ, chế độ tối, và trợ lý chat AI.",
       "tech": ["Astro", "Tailwind CSS", "React"],
       "liveUrl": "https://jeremynguyen.tech",
-      "repoUrl": "https://github.com/jeremynguyen/portfolio"
+      "repoUrl": "https://github.com/nta-jeremy/portfolio"
     }
   ],
   "contact": {
     "website": "https://jeremynguyen.tech",
-    "github": "https://github.com/jeremynguyen",
+    "github": "https://github.com/nta-jeremy",
     "location": "Global / Remote"
   }
 }
