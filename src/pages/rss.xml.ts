@@ -14,7 +14,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: 'Jeremy Nguyen — Blog',
     description: 'Writing on systems, craft, and the philosophy of technology.',
-    site: context.site?.toString() || 'https://jeremynguyen.dev',
+    site: context.site?.toString() || 'https://jeremytech.io.vn',
     items: posts.map((post) => {
       const slug = post.id.replace(/^en\//, '');
       return {
@@ -26,7 +26,7 @@ export async function GET(context: APIContext) {
       };
     }),
     customData: `<language>en</language>
-<managingEditor>jeremy@jeremynguyen.dev (Jeremy Nguyen)</managingEditor>
+<managingEditor>jeremy@jeremytech.io.vn (Jeremy Nguyen)</managingEditor>
     `.trim(),
   });
 }
