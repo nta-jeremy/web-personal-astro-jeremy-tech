@@ -9,7 +9,7 @@ const { post } = Astro.props;
 const { data } = post;
 
 const slug = post.id.replace(/^(en|vi)\//, '');
-const href = data.locale === 'vi' ? `/vi/blog/${slug}` : `/blog/${slug}`;
+const href = data.locale === 'en' ? `/en/blog/${slug}` : `/blog/${slug}`;
 
 const dateFmt = new Date(data.pubDate).toLocaleDateString(
   data.locale === 'vi' ? 'vi-VN' : 'en-US',

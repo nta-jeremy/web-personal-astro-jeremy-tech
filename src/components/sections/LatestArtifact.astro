@@ -6,7 +6,7 @@ export interface Props {
   locale?: 'en' | 'vi';
 }
 
-const { locale = 'en' } = Astro.props;
+const { locale = 'vi' } = Astro.props;
 const translations = getTranslations(locale);
 
 const allPosts = await getCollection('blog');
@@ -60,7 +60,7 @@ const latest = posts[0];
       </p>
 
       <a
-        href={`/${locale === 'vi' ? 'vi/' : ''}blog/${latest.id.replace(/^(en|vi)\//, '')}/`}
+        href={`/${locale === 'en' ? 'en/' : ''}blog/${latest.id.replace(/^(en|vi)\//, '')}/`}
         style="font-size: 13px; color: var(--accent); font-weight: 500; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;"
       >
         {t(translations, 'home.latestRead')}
