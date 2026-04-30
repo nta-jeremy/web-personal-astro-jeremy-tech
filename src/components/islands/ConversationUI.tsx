@@ -1,7 +1,26 @@
 import { useState, useCallback } from 'react';
 
+interface Step {
+  message: string;
+  emphasis?: string;
+  placeholder: string;
+}
+
+interface ValidationMessages {
+  name?: string;
+  email?: string;
+  emailInvalid?: string;
+  topic?: string;
+}
+
 interface Props {
-  locale?: 'en' | 'vi';
+  steps: Step[];
+  sendLabel: string;
+  sendingLabel: string;
+  successTitle: string;
+  successMsg: string;
+  errorMsg: string;
+  validation: ValidationMessages;
 }
 
 interface FormData {
@@ -16,43 +35,32 @@ interface FormErrors {
   topic?: string;
 }
 
-export default function ConversationUI({ locale = 'en' }: Props) {
+export default function ConversationUI({
+  steps,
+  sendLabel,
+  sendingLabel,
+  successTitle,
+  successMsg,
+  errorMsg,
+  validation,
+}: Props) {
   const [form, setForm] = useState<FormData>({ name: '', email: '', topic: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const messages = locale === 'vi'
-    ? [
-        { m: "Xin chào. Tôi là Jeremy. Tôi rất vui được nghe về những gì bạn đang xây dựng. Để bắt đầu,", em: "tên bạn là gì?", ph: 'Nhập tên của bạn…' },
-        { m: "Rất vui được gặp bạn. Tôi nên sử dụng địa chỉ email nào để liên hệ lại với bạn?", ph: 'email@example.com' },
-        { m: "Cuối cùng, bạn muốn nói về điều gì? Hãy thoải mái mô tả chi tiết về dự án của bạn.", ph: 'Tôi có một ý tưởng về…' },
-      ]
-    : [
-        { m: "Hello. I'm Jeremy. I'm excited to hear about what you're building. To get started,", em: "what's your name?", ph: 'Type your name…' },
-        { m: "Nice to meet you. What email address should I use to follow up with you?", ph: 'email@example.com' },
-        { m: "Finally, what would you like to talk about? Feel free to be as detailed as you like about your initiative.", ph: 'I have an idea for…' },
-      ];
-
-  const sendLabel = locale === 'vi' ? 'Gửi cuộc trò chuyện' : 'Send conversation';
-  const sendingLabel = locale === 'vi' ? 'Đang gửi…' : 'Sending…';
-  const successTitle = locale === 'vi' ? 'Đã gửi!' : 'Sent!';
-  const successMsg = locale === 'vi'
-    ? 'Cảm ơn bạn đã liên hệ. Tôi sẽ phản hồi sớm.'
-    : "Thanks for reaching out. I'll get back to you soon.";
-
   const validate = useCallback((): boolean => {
     const next: FormErrors = {};
-    if (!form.name.trim()) next.name = locale === 'vi' ? 'Vui lòng nhập tên' : 'Please enter your name';
+    if (!form.name.trim()) next.name = validation.name;
     if (!form.email.trim()) {
-      next.email = locale === 'vi' ? 'Vui lòng nhập email' : 'Please enter your email';
+      next.email = validation.email;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      next.email = locale === 'vi' ? 'Email không hợp lệ' : 'Invalid email';
+      next.email = validation.emailInvalid;
     }
-    if (!form.topic.trim()) next.topic = locale === 'vi' ? 'Vui lòng nhập nội dung' : 'Please enter a topic';
+    if (!form.topic.trim()) next.topic = validation.topic;
     setErrors(next);
     return Object.keys(next).length === 0;
-  }, [form, locale]);
+  }, [form, validation]);
 
   const handleSubmit = async () => {
     if (!validate()) return;
@@ -61,15 +69,15 @@ export default function ConversationUI({ locale = 'en' }: Props) {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, lang: locale }),
+        body: JSON.stringify({ ...form, lang: document.documentElement.lang || 'en' }),
       });
       if (res.ok) {
         setSubmitted(true);
       } else {
-        setErrors({ topic: locale === 'vi' ? 'Gửi thất bại. Vui lòng thử lại.' : 'Failed to send. Please try again.' });
+        setErrors({ topic: errorMsg });
       }
     } catch {
-      setErrors({ topic: locale === 'vi' ? 'Gửi thất bại. Vui lòng thử lại.' : 'Failed to send. Please try again.' });
+      setErrors({ topic: errorMsg });
     } finally {
       setSubmitting(false);
     }
@@ -96,7 +104,7 @@ export default function ConversationUI({ locale = 'en' }: Props) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 28, position: 'relative' }}>
-      {messages.map((msg, i) => (
+      {steps.map((step, i) => (
         <div
           key={i}
           style={{
@@ -122,15 +130,15 @@ export default function ConversationUI({ locale = 'en' }: Props) {
               background: 'var(--bg-alt)', border: '1px solid var(--border)', borderRadius: '16px 16px 16px 4px',
               padding: '12px 18px', fontSize: 14.5, lineHeight: 1.55, maxWidth: 440, color: 'var(--ink)',
             }}>
-              {msg.m}{' '}
-              {msg.em && (
-                <span style={{ color: 'var(--accent)', fontWeight: 500 }}>{msg.em}</span>
+              {step.message}{' '}
+              {step.emphasis && (
+                <span style={{ color: 'var(--accent)', fontWeight: 500 }}>{step.emphasis}</span>
               )}
             </div>
           </div>
           <input
             type={i === 1 ? 'email' : 'text'}
-            placeholder={msg.ph}
+            placeholder={step.placeholder}
             value={form[['name', 'email', 'topic'][i] as keyof FormData]}
             onChange={(e) => {
               const key = ['name', 'email', 'topic'][i] as keyof FormData;

@@ -1,32 +1,16 @@
 ---
 import Layout from '@layouts/BaseLayout.astro';
 import { getTranslations, t } from '@/i18n/utils';
-import ContactInfo from '@components/sections/ContactInfo.astro';
+import ContactPage from '@components/sections/ContactPage.astro';
 
 const locale = Astro.currentLocale || 'vi';
 const translations = getTranslations(locale as 'en' | 'vi');
-
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Jeremy Nguyen',
-  jobTitle: 'CTO · AI Builder',
-  url: 'https://jeremytech.io.vn',
-  email: 'tunganhnguyen2502@gmail.com',
-  sameAs: [
-    'https://github.com/nta-jeremy',
-    'https://linkedin.com/in/jeremynguyen',
-    'https://x.com/Ichimoku2502',
-  ],
-};
 ---
 
 <Layout title={t(translations, 'contact.title')} description={t(translations, 'contact.subtitle')}>
   <div class="artifact contact-page">
-    <ContactInfo translations={translations} />
+    <ContactPage translations={translations} locale={locale as 'en' | 'vi'} />
   </div>
-
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 </Layout>
 
 <style>

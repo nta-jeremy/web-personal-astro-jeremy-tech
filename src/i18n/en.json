@@ -69,6 +69,32 @@
     "copyEmail": "Copy email",
     "emailCopied": "Copied!"
   },
+  "conversation": {
+    "step1": {
+      "message": "Hello. I'm Jeremy. I'm excited to hear about what you're building. To get started,",
+      "emphasis": "what's your name?",
+      "placeholder": "Type your name…"
+    },
+    "step2": {
+      "message": "Nice to meet you. What email address should I use to follow up with you?",
+      "placeholder": "email@example.com"
+    },
+    "step3": {
+      "message": "Finally, what would you like to talk about? Feel free to be as detailed as you like about your initiative.",
+      "placeholder": "I have an idea for…"
+    },
+    "sendButton": "Send conversation",
+    "sendingButton": "Sending…",
+    "successTitle": "Sent!",
+    "successMessage": "Thanks for reaching out. I'll get back to you soon.",
+    "errorMessage": "Failed to send. Please try again.",
+    "validation": {
+      "nameRequired": "Please enter your name",
+      "emailRequired": "Please enter your email",
+      "emailInvalid": "Invalid email",
+      "topicRequired": "Please enter a topic"
+    }
+  },
   "chat": {
     "placeholder": "Ask anything about my work…",
     "send": "Send",

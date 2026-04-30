@@ -69,6 +69,32 @@
     "copyEmail": "Sao chép email",
     "emailCopied": "Đã sao chép!"
   },
+  "conversation": {
+    "step1": {
+      "message": "Xin chào. Tôi là Jeremy. Tôi rất vui được nghe về những gì bạn đang xây dựng. Để bắt đầu,",
+      "emphasis": "tên bạn là gì?",
+      "placeholder": "Nhập tên của bạn…"
+    },
+    "step2": {
+      "message": "Rất vui được gặp bạn. Tôi nên sử dụng địa chỉ email nào để liên hệ lại với bạn?",
+      "placeholder": "email@example.com"
+    },
+    "step3": {
+      "message": "Cuối cùng, bạn muốn nói về điều gì? Hãy thoải mái mô tả chi tiết về dự án của bạn.",
+      "placeholder": "Tôi có một ý tưởng về…"
+    },
+    "sendButton": "Gửi cuộc trò chuyện",
+    "sendingButton": "Đang gửi…",
+    "successTitle": "Đã gửi!",
+    "successMessage": "Cảm ơn bạn đã liên hệ. Tôi sẽ phản hồi sớm.",
+    "errorMessage": "Gửi thất bại. Vui lòng thử lại.",
+    "validation": {
+      "nameRequired": "Vui lòng nhập tên",
+      "emailRequired": "Vui lòng nhập email",
+      "emailInvalid": "Email không hợp lệ",
+      "topicRequired": "Vui lòng nhập nội dung"
+    }
+  },
   "chat": {
     "placeholder": "Hỏi bất cứ điều gì về công việc của mình…",
     "send": "Gửi",
