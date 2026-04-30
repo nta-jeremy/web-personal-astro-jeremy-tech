@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 export default function LanguageToggle() {
-  const [locale, setLocale] = useState<'en' | 'vi'>('en');
+  const [locale, setLocale] = useState<'en' | 'vi'>('vi');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
