@@ -1,3 +1,4 @@
 name = "web-personal-astro-jeremy-tech"
 compatibility_date = "2026-04-23"
 compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
