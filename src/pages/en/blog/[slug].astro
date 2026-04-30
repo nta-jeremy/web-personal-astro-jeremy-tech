@@ -64,6 +64,14 @@ const canonical = `${site}${archivePath}${slugify(post.id)}/`;
       url: canonical,
     }}
   />
+  <JsonLd
+    schema="breadcrumb"
+    breadcrumbs={[
+      { name: 'Home', item: 'https://jeremytech.io.vn/' },
+      { name: 'Blog', item: `https://jeremytech.io.vn${archivePath}` },
+      { name: data.title, item: canonical },
+    ]}
+  />
 
   <article class="artifact blog-post">
     <a href={archivePath} class="back-link">

@@ -18,6 +18,13 @@ const pageTitle = t(translations, 'blog.title');
       url: `https://jeremytech.io.vn${locale === 'en' ? '/en/blog/' : '/blog/'}`,
     }}
   />
+  <JsonLd
+    schema="breadcrumb"
+    breadcrumbs={[
+      { name: 'Home', item: 'https://jeremytech.io.vn/' },
+      { name: pageTitle, item: 'https://jeremytech.io.vn/en/blog/' },
+    ]}
+  />
 
   <div class="artifact blog-archive">
     <div class="archive-header">

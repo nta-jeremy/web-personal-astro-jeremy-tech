@@ -1,10 +1,16 @@
 ---
-export interface Props {
-  schema: 'person' | 'article' | 'website' | 'webpage';
-  data?: Record<string, unknown>;
+export interface BreadcrumbItem {
+  name: string;
+  item: string;
 }
 
-const { schema, data = {} } = Astro.props;
+export interface Props {
+  schema: 'person' | 'article' | 'website' | 'webpage' | 'breadcrumb';
+  data?: Record<string, unknown>;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const { schema, data = {}, breadcrumbs = [] } = Astro.props;
 
 const site = 'https://jeremytech.io.vn';
 
@@ -61,6 +67,25 @@ function buildWebPageSchema(): Record<string, unknown> {
   };
 }
 
+function buildBreadcrumbSchema(): Record<string, unknown> {
+  const items = breadcrumbs.length
+    ? breadcrumbs
+    : [
+        { name: 'Home', item: site },
+        { name: (data.name as string) || 'Page', item: (data.url as string) || site },
+      ];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.item,
+    })),
+  };
+}
+
 let structuredData: Record<string, unknown>;
 
 switch (schema) {
@@ -75,6 +100,9 @@ switch (schema) {
     break;
   case 'webpage':
     structuredData = buildWebPageSchema();
+    break;
+  case 'breadcrumb':
+    structuredData = buildBreadcrumbSchema();
     break;
   default:
     structuredData = buildWebsiteSchema();

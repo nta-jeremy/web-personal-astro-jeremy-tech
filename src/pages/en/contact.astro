@@ -19,7 +19,7 @@ const translations = getTranslations(locale as 'en' | 'vi');
     position: relative;
   }
   @media (max-width: 1100px) {
-    .contact-sidebar {
+    :global(.contact-sidebar) {
       display: none !important;
     }
   }

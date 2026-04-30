@@ -1,7 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import '@/styles/global.css';
+import globalCss from '@/styles/global.css?inline';
 import BaseHead from '@components/seo/BaseHead.astro';
 import Sidebar from '@components/ui/Sidebar.astro';
 import ChatBar from '@components/ui/ChatBar.astro';
@@ -46,6 +46,7 @@ const hreflang = [
       noindex={noindex}
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style set:html={globalCss}></style>
 
     <!-- FOUC prevention: apply theme before first paint -->
     <script is:inline>
@@ -89,12 +90,12 @@ const hreflang = [
 
       <div class="main">
         <!-- Mobile top bar (hidden on desktop) -->
-        <MobileHeader client:load />
+        <MobileHeader client:idle />
 
         <!-- Scrollable main content -->
-        <div class="main-scroll">
+        <main class="main-scroll">
           <slot />
-        </div>
+        </main>
 
         <!-- Desktop chatbar (hidden on mobile) -->
         <div class="hidden md:block">

@@ -16,5 +16,11 @@ const translations = getTranslations(locale as 'en' | 'vi');
 <style>
   .contact-page {
     padding-top: 8px;
+    position: relative;
+  }
+  @media (max-width: 1100px) {
+    :global(.contact-sidebar) {
+      display: none !important;
+    }
   }
 </style>

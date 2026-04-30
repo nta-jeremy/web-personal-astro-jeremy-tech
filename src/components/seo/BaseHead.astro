@@ -12,7 +12,7 @@ export interface Props {
 const {
   title,
   description = 'Personal portfolio of Jeremy Nguyen',
-  image = '/og-default.svg',
+  image = '/og-default.png',
   type = 'website',
   noindex = false,
   canonicalUrl,
@@ -49,10 +49,6 @@ const ogImage = image.startsWith('http') ? image : `${site}${image}`;
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
-
-<!-- Preconnect for performance -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 <!-- Hreflang alternates -->
 {
