@@ -19,9 +19,9 @@ export default defineConfig({
   prefetch: true,
   i18n: {
     locales: ['en', 'vi'],
-    defaultLocale: 'en',
+    defaultLocale: 'vi',
     prefixDefaultLocale: false,
-    fallback: { vi: 'en' },
+    fallback: { en: 'vi' },
     fallbackType: 'rewrite',
   },
   image: {

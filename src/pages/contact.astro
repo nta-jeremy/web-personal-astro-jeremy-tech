@@ -1,37 +1,36 @@
 ---
 import Layout from '@layouts/BaseLayout.astro';
 import { getTranslations, t } from '@/i18n/utils';
-import ConversationUI from '@components/islands/ConversationUI';
+import ContactInfo from '@components/sections/ContactInfo.astro';
 
-const locale = Astro.currentLocale || 'en';
+const locale = Astro.currentLocale || 'vi';
 const translations = getTranslations(locale as 'en' | 'vi');
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Jeremy Nguyen',
+  jobTitle: 'CTO · AI Builder',
+  url: 'https://jeremytech.io.vn',
+  email: 'jeremy@example.com',
+  sameAs: [
+    'https://github.com/jeremynguyen',
+    'https://linkedin.com/in/jeremynguyen',
+    'https://x.com/jeremynguyen',
+  ],
+};
 ---
 
 <Layout title={t(translations, 'contact.title')} description={t(translations, 'contact.subtitle')}>
   <div class="artifact contact-page">
-    <h1
-      class="serif"
-      style="font-size: 44px; font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 14px;"
-    >
-      {t(translations, 'contact.heading')}
-    </h1>
-
-    <p style="font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0 0 40px; max-width: 440px;">
-      {t(translations, 'contact.subtitle')}
-    </p>
-
-    <ConversationUI client:load locale={locale as 'en' | 'vi'} />
+    <ContactInfo translations={translations} />
   </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 </Layout>
 
 <style>
   .contact-page {
     padding-top: 8px;
-    position: relative;
-  }
-  @media (max-width: 1100px) {
-    .contact-sidebar {
-      display: none !important;
-    }
   }
 </style>

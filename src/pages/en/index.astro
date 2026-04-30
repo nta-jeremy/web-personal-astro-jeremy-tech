@@ -5,7 +5,7 @@ import HomeCards from '@components/sections/HomeCards.astro';
 import LatestArtifact from '@components/sections/LatestArtifact.astro';
 import { getTranslations, t } from '@/i18n/utils';
 
-const locale = Astro.currentLocale || 'vi';
+const locale = Astro.currentLocale || 'en';
 const translations = getTranslations(locale as 'en' | 'vi');
 ---
 
@@ -13,7 +13,7 @@ const translations = getTranslations(locale as 'en' | 'vi');
   title="Jeremy Nguyen · CTO & AI Builder"
   description={t(translations, 'home.subtitle')}
 >
-  <div class="artifact" style="padding-top: 72px;">
+  <div class="artifact home-artifact">
     <HomeHero locale={locale as 'en' | 'vi'} />
     <HomeCards locale={locale as 'en' | 'vi'} />
     <LatestArtifact locale={locale as 'en' | 'vi'} />

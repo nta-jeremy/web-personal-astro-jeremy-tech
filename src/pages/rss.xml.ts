@@ -4,7 +4,7 @@ import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
   const posts = await getCollection('blog', ({ data }) => {
-    return !data.draft && data.locale === 'en';
+    return !data.draft && data.locale === 'vi';
   });
 
   posts.sort((a, b) => {
@@ -12,11 +12,11 @@ export async function GET(context: APIContext) {
   });
 
   return rss({
-    title: 'Jeremy Nguyen — Blog',
-    description: 'Writing on systems, craft, and the philosophy of technology.',
+    title: 'Jeremy Nguyen — Blog (Tiếng Việt)',
+    description: 'Viết về hệ thống, nghề thủ công và triết lý công nghệ.',
     site: context.site?.toString() || 'https://jeremytech.io.vn',
     items: posts.map((post) => {
-      const slug = post.id.replace(/^en\//, '');
+      const slug = post.id.replace(/^vi\//, '');
       return {
         title: post.data.title,
         pubDate: new Date(post.data.pubDate),
@@ -25,7 +25,7 @@ export async function GET(context: APIContext) {
         categories: [post.data.category, ...post.data.tags],
       };
     }),
-    customData: `<language>en</language>
+    customData: `<language>vi</language>
 <managingEditor>jeremy@jeremytech.io.vn (Jeremy Nguyen)</managingEditor>
     `.trim(),
   });

@@ -5,7 +5,7 @@ import JsonLd from '@components/seo/JsonLd.astro';
 import BlogList from '@components/sections/BlogList.astro';
 import PagefindSearch from '@components/ui/PagefindSearch.astro';
 
-const locale = Astro.currentLocale || 'vi';
+const locale = Astro.currentLocale || 'en';
 const translations = getTranslations(locale as 'en' | 'vi');
 const pageTitle = t(translations, 'blog.title');
 ---
@@ -15,7 +15,7 @@ const pageTitle = t(translations, 'blog.title');
     schema="webpage"
     data={{
       name: pageTitle,
-      url: `https://jeremytech.io.vn/vi/blog/`,
+      url: `https://jeremytech.io.vn${locale === 'en' ? '/en/blog/' : '/blog/'}`,
     }}
   />
 
@@ -64,7 +64,7 @@ const pageTitle = t(translations, 'blog.title');
   @media (min-width: 768px) {
     .archive-heading {
       font-size: 52px;
-      margin-bottom: 22px;
+      margin-bottom: 40px;
     }
   }
 

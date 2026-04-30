@@ -20,17 +20,17 @@ export interface Props {
 const { title, description = 'Personal portfolio of Jeremy Nguyen', image, noindex } = Astro.props;
 
 const { pathname } = Astro.url;
-const isVi = pathname.startsWith('/vi');
-const lang = isVi ? 'vi' : 'en';
+const isEn = pathname.startsWith('/en');
+const lang = isEn ? 'en' : 'vi';
 const site = 'https://jeremytech.io.vn';
 const canonical = `${site}${pathname}`;
-const canonicalEn = `${site}${pathname.replace(/^\/vi/, '') || '/'}`;
-const canonicalVi = `${site}${getRelativeLocaleUrl('vi', pathname.replace(/^\/vi/, '') || '/')}`;
+const canonicalVi = `${site}${pathname.replace(/^\/en/, '') || '/'}`;
+const canonicalEn = `${site}${getRelativeLocaleUrl('en', pathname.replace(/^\/en/, '') || '/')}`;
 
 const hreflang = [
-  { lang: 'en', url: canonicalEn },
   { lang: 'vi', url: canonicalVi },
-  { lang: 'x-default', url: canonicalEn },
+  { lang: 'en', url: canonicalEn },
+  { lang: 'x-default', url: canonicalVi },
 ];
 ---
 

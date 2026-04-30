@@ -14,10 +14,11 @@ const navItems = [
 ];
 
 function isActive(pathname: string, href: string) {
+  const normalized = pathname.replace(/^\/en/, '') || '/';
   if (href === '/about') {
-    return pathname === '/' || pathname === '/about' || pathname.startsWith('/about');
+    return normalized === '/' || normalized === '/about' || normalized.startsWith('/about');
   }
-  return pathname === href || pathname.startsWith(href + '/');
+  return normalized === href || normalized.startsWith(href + '/');
 }
 
 export default function MobileHeader({ title = 'Jeremy' }: Props) {

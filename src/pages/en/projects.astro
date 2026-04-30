@@ -3,7 +3,7 @@ import Layout from '@layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getTranslations, t } from '@/i18n/utils';
 
-const locale = Astro.currentLocale || 'vi';
+const locale = Astro.currentLocale || 'en';
 const translations = getTranslations(locale as 'en' | 'vi');
 
 const allProjects = await getCollection('projects');
@@ -12,6 +12,11 @@ const projects = allProjects.sort((a, b) => {
   if (!a.data.featured && b.data.featured) return 1;
   return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
+
+const allCategories = Array.from(
+  new Set(projects.flatMap((p) => p.data.categories || []))
+).sort();
+const filterLabels = ['All', ...allCategories];
 ---
 
 <Layout
@@ -27,7 +32,7 @@ const projects = allProjects.sort((a, b) => {
 
     <h1
       class="serif"
-      style="font-size: clamp(36px, 4.5vw, 56px); font-weight: 500; line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 14px;"
+      style="font-size: 56px; font-weight: 500; line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 14px;"
     >
       {t(translations, 'projects.heading')}
     </h1>
@@ -38,24 +43,49 @@ const projects = allProjects.sort((a, b) => {
       {t(translations, 'projects.subtitle')}
     </p>
 
+    <div class="project-filters" data-filters>
+      {
+        filterLabels.map((label, i) => (
+          <button
+            class={`project-filter-chip${i === 0 ? ' active' : ''}`}
+            data-filter={label}
+            type="button"
+          >
+            {label}
+          </button>
+        ))
+      }
+    </div>
+
     <div class="project-list">
       {
         projects.map((project, index) => (
           <div
             class={`project-list-item${project.data.featured ? ' featured' : ''}`}
             data-index={index}
+            data-categories={JSON.stringify(project.data.categories || [])}
           >
             {project.data.featured && (
               <div class="project-list-image">
                 <div class="project-image-placeholder">
                   <svg width="100%" height="100%" class="project-image-svg">
                     <defs>
-                      <pattern id={`pp-vi-${index}`} width="22" height="22" patternUnits="userSpaceOnUse">
+                      <pattern
+                        id={`pp-${index}`}
+                        width="22"
+                        height="22"
+                        patternUnits="userSpaceOnUse"
+                      >
                         <circle cx="11" cy="11" r="0.6" fill="#f4d4b5" />
                       </pattern>
                     </defs>
-                    <rect width="100%" height="100%" fill={`url(#pp-vi-${index})`} />
-                    <g stroke="#f4d4b5" stroke-width="0.4" fill="none" opacity="0.5">
+                    <rect width="100%" height="100%" fill={`url(#pp-${index})`} />
+                    <g
+                      stroke="#f4d4b5"
+                      stroke-width="0.4"
+                      fill="none"
+                      opacity="0.5"
+                    >
                       <path d="M20 20 L200 120 M20 120 L200 20 M100 20 L100 120 M20 70 L200 70" />
                     </g>
                   </svg>
@@ -72,7 +102,7 @@ const projects = allProjects.sort((a, b) => {
               )}
               <h2
                 class="serif"
-                style="font-size: clamp(22px, 3vw, 28px); font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 10px;"
+                style="font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 10px;"
               >
                 {project.data.title}
               </h2>
@@ -109,7 +139,62 @@ const projects = allProjects.sort((a, b) => {
   </div>
 </Layout>
 
+<script>
+  (function () {
+    const container = document.querySelector('[data-filters]');
+    if (!container) return;
+    const chips = container.querySelectorAll('[data-filter]');
+    const items = document.querySelectorAll('.project-list-item');
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const filter = chip.getAttribute('data-filter') || 'All';
+
+        chips.forEach((c) => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        items.forEach((item) => {
+          const catsRaw = item.getAttribute('data-categories');
+          const cats: string[] = catsRaw ? JSON.parse(catsRaw) : [];
+          if (filter === 'All' || cats.includes(filter)) {
+            (item as HTMLElement).style.display = '';
+          } else {
+            (item as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>
+
 <style>
+  .project-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .project-filter-chip {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--border-2);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .project-filter-chip:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .project-filter-chip.active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
   .project-list {
     display: flex;
     flex-direction: column;

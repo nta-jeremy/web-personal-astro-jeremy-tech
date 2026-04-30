@@ -33,14 +33,14 @@ export function t(translations: Record<string, unknown>, key: string): string {
 }
 
 export function useLocale(): Locale {
-  const [locale, setLocale] = useState<Locale>('en');
+  const [locale, setLocale] = useState<Locale>('vi');
 
   useEffect(() => {
     const path = window.location.pathname;
-    if (path.startsWith('/vi/') || path === '/vi') {
-      setLocale('vi');
-    } else {
+    if (path.startsWith('/en/') || path === '/en') {
       setLocale('en');
+    } else {
+      setLocale('vi');
     }
   }, []);
 

@@ -8,7 +8,7 @@ export interface Props {
 const { locale = 'en' } = Astro.props;
 const translations = getTranslations(locale);
 
-const prefix = locale === 'vi' ? '/vi' : '';
+const prefix = locale === 'en' ? '/en' : '';
 
 const cards = [
   {

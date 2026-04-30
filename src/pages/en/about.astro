@@ -1,14 +1,14 @@
 ---
 import Layout from '@layouts/BaseLayout.astro';
 import { getTranslations, t } from '@/i18n/utils';
-import aboutData from '@/data/about-vi.json';
-import careerData from '@/data/career-vi.json';
+import aboutData from '@/data/about.json';
+import careerData from '@/data/career.json';
 import AboutBio from '@components/sections/AboutBio.astro';
 import AboutPhilosophy from '@components/sections/AboutPhilosophy.astro';
 import AboutDomains from '@components/sections/AboutDomains.astro';
 import AboutTimeline from '@components/sections/AboutTimeline.astro';
 
-const locale = Astro.currentLocale || 'vi';
+const locale = Astro.currentLocale || 'en';
 const translations = getTranslations(locale as 'en' | 'vi');
 
 const personSchema = {

@@ -8,10 +8,10 @@ export default function LanguageToggle() {
   useEffect(() => {
     setMounted(true);
     const path = window.location.pathname;
-    if (path.startsWith('/vi/') || path === '/vi') {
-      setLocale('vi');
-    } else {
+    if (path.startsWith('/en/') || path === '/en') {
       setLocale('en');
+    } else {
+      setLocale('vi');
     }
   }, []);
 
@@ -20,13 +20,13 @@ export default function LanguageToggle() {
 
     // Strip current locale prefix to get the base path
     let basePath = path;
-    if (basePath.startsWith('/vi/')) {
+    if (basePath.startsWith('/en/')) {
       basePath = basePath.slice(3) || '/';
-    } else if (basePath === '/vi') {
+    } else if (basePath === '/en') {
       basePath = '/';
     }
 
-    const targetLocale = locale === 'en' ? 'vi' : 'en';
+    const targetLocale = locale === 'vi' ? 'en' : 'vi';
     const newPath = getRelativeLocaleUrl(targetLocale, basePath);
     window.location.href = newPath;
   };

@@ -6,11 +6,11 @@ import JsonLd from '@components/seo/JsonLd.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => {
-    return !data.draft && data.locale === 'en';
+    return !data.draft && data.locale === 'vi';
   });
 
   return posts.map((post) => {
-    const slug = post.id.replace(/^en\//, '');
+    const slug = post.id.replace(/^vi\//, '');
     return { params: { slug }, props: { post } };
   });
 }
@@ -45,7 +45,7 @@ const readingTimeLabel = data.readingTime
   ? `${data.readingTime} ${t(translations, 'blog.readingTime')}`
   : '';
 
-const archivePath = locale === 'vi' ? '/vi/blog/' : '/blog/';
+const archivePath = locale === 'en' ? '/en/blog/' : '/blog/';
 const site = 'https://jeremytech.io.vn';
 const canonical = `${site}${archivePath}${slugify(post.id)}/`;
 ---
@@ -82,14 +82,6 @@ const canonical = `${site}${archivePath}${slugify(post.id)}/`;
 
     <div class="post-body">
       <Content />
-    </div>
-
-    <div class="post-author">
-      <div class="post-author-avatar" aria-hidden="true" />
-      <div class="post-author-info">
-        <div class="post-author-name serif">Written by Jeremy Nguyen</div>
-        <div class="post-author-desc">Systems, essays, and occasional experiments.</div>
-      </div>
     </div>
 
     <nav class="post-nav" aria-label={locale === 'vi' ? 'Điều hướng bài viết' : 'Post navigation'}>
@@ -197,33 +189,6 @@ const canonical = `${site}${archivePath}${slugify(post.id)}/`;
     }
   }
 
-  .post-author {
-    margin-top: 60px;
-    padding: 24px;
-    background: var(--bg-alt);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-  .post-author-avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #c27a5c, #7a4532);
-    flex-shrink: 0;
-  }
-  .post-author-name {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 2px;
-    color: var(--ink);
-  }
-  .post-author-desc {
-    font-size: 13px;
-    color: var(--muted);
-  }
   .post-nav {
     margin-top: 48px;
     padding-top: 24px;
