@@ -9,7 +9,7 @@ export const SOCIAL_LINKS = {
   },
   linkedin: {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/jeremynguyen',
+    url: 'https://www.linkedin.com/in/tunganh252/',
   },
   x: {
     name: 'X',
