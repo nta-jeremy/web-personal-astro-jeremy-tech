@@ -1,4 +1,6 @@
 ---
+import { SITE_URL, SAME_AS } from '@/config/social-links';
+
 export interface BreadcrumbItem {
   name: string;
   item: string;
@@ -12,19 +14,14 @@ export interface Props {
 
 const { schema, data = {}, breadcrumbs = [] } = Astro.props;
 
-const site = 'https://jeremytech.io.vn';
-
 function buildPersonSchema(): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: (data.name as string) || 'Jeremy Nguyen',
     jobTitle: (data.jobTitle as string) || 'Software Engineer',
-    url: site,
-    sameAs: (data.sameAs as string[]) || [
-      'https://github.com/nta-jeremy',
-      'https://linkedin.com/in/jeremynguyen',
-    ],
+    url: SITE_URL,
+    sameAs: (data.sameAs as string[]) || SAME_AS.slice(0, 2),
     ...data,
   };
 }
@@ -52,7 +49,7 @@ function buildWebsiteSchema(): Record<string, unknown> {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: (data.name as string) || 'Jeremy Nguyen',
-    url: site,
+    url: SITE_URL,
     ...data,
   };
 }
@@ -62,7 +59,7 @@ function buildWebPageSchema(): Record<string, unknown> {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: (data.name as string) || 'Jeremy Nguyen',
-    url: (data.url as string) || site,
+    url: (data.url as string) || SITE_URL,
     ...data,
   };
 }
@@ -71,8 +68,8 @@ function buildBreadcrumbSchema(): Record<string, unknown> {
   const items = breadcrumbs.length
     ? breadcrumbs
     : [
-        { name: 'Home', item: site },
-        { name: (data.name as string) || 'Page', item: (data.url as string) || site },
+        { name: 'Home', item: SITE_URL },
+        { name: (data.name as string) || 'Page', item: (data.url as string) || SITE_URL },
       ];
   return {
     '@context': 'https://schema.org',

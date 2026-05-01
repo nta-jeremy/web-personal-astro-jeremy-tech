@@ -7,6 +7,7 @@ import AboutBio from '@components/sections/AboutBio.astro';
 import AboutPhilosophy from '@components/sections/AboutPhilosophy.astro';
 import AboutDomains from '@components/sections/AboutDomains.astro';
 import AboutTimeline from '@components/sections/AboutTimeline.astro';
+import { SITE_URL, SAME_AS } from '@/config/social-links';
 
 const locale = Astro.currentLocale || 'en';
 const translations = getTranslations(locale as 'en' | 'vi');
@@ -16,12 +17,8 @@ const personSchema = {
   '@type': 'Person',
   name: 'Jeremy Nguyen',
   jobTitle: 'CTO · AI Builder',
-  url: 'https://jeremytech.io.vn',
-  sameAs: [
-    'https://github.com/nta-jeremy',
-    'https://linkedin.com/in/jeremynguyen',
-    'https://x.com/Ichimoku2502',
-  ],
+  url: SITE_URL,
+  sameAs: SAME_AS,
 };
 ---
 

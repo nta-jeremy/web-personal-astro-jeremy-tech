@@ -2,6 +2,7 @@
 import ContactInfo from './ContactInfo.astro';
 import ConversationUI from '../islands/ConversationUI';
 import { t } from '@/i18n/utils';
+import { EMAIL, SITE_URL, SAME_AS } from '@/config/social-links';
 
 export interface Props {
   translations: Record<string, unknown>;
@@ -15,13 +16,9 @@ const personSchema = {
   '@type': 'Person',
   name: 'Jeremy Nguyen',
   jobTitle: 'CTO · AI Builder',
-  url: 'https://jeremytech.io.vn',
-  email: 'tunganhnguyen2502@gmail.com',
-  sameAs: [
-    'https://github.com/nta-jeremy',
-    'https://linkedin.com/in/jeremynguyen',
-    'https://x.com/Ichimoku2502',
-  ],
+  url: SITE_URL,
+  email: EMAIL,
+  sameAs: SAME_AS,
 };
 ---
 

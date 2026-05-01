@@ -1,5 +1,6 @@
 ---
 import { t } from '@/i18n/utils';
+import { EMAIL, SOCIAL_LINKS } from '@/config/social-links';
 
 export interface Props {
   translations: Record<string, unknown>;
@@ -7,22 +8,8 @@ export interface Props {
 
 const { translations } = Astro.props;
 
-const email = 'tunganhnguyen2502@gmail.com';
-
-const socials = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/nta-jeremy',
-  },
-  {
-    name: 'LinkedIn',
-    url: 'https://linkedin.com/in/jeremynguyen',
-  },
-  {
-    name: 'X',
-    url: 'https://x.com/Ichimoku2502',
-  },
-];
+const email = EMAIL;
+const socials = Object.values(SOCIAL_LINKS);
 ---
 
 <section class="contact-info">
