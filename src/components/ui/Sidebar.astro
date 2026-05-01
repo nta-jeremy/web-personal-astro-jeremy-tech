@@ -1,14 +1,17 @@
 ---
 import LanguageToggle from '@components/islands/LanguageToggle';
 import ThemeToggle from '@components/islands/ThemeToggle';
+import { getTranslations } from '@/i18n/utils';
 
 const { pathname } = Astro.url;
+const locale = pathname.startsWith('/en') ? 'en' : 'vi';
+const t = getTranslations(locale);
 
 const navItems = [
-  { href: '/about', label: 'About', id: 'about' },
-  { href: '/projects', label: 'Projects', id: 'projects' },
-  { href: '/blog', label: 'Blog', id: 'blog' },
-  { href: '/contact', label: 'Contact', id: 'contact' },
+  { href: '/about', label: t.nav.about, id: 'about' },
+  { href: '/projects', label: t.nav.projects, id: 'projects' },
+  { href: '/blog', label: t.nav.blog, id: 'blog' },
+  { href: '/contact', label: t.nav.contact, id: 'contact' },
 ];
 
 function isActive(href: string) {

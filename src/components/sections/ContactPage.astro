@@ -2,7 +2,7 @@
 import ContactInfo from './ContactInfo.astro';
 import ConversationUI from '../islands/ConversationUI';
 import { t } from '@/i18n/utils';
-import { EMAIL, SITE_URL, SAME_AS } from '@/config/social-links';
+import { SITE_URL, SAME_AS } from '@/config/social-links';
 
 export interface Props {
   translations: Record<string, unknown>;
@@ -17,7 +17,6 @@ const personSchema = {
   name: 'Jeremy Nguyen',
   jobTitle: 'CTO · AI Builder',
   url: SITE_URL,
-  email: EMAIL,
   sameAs: SAME_AS,
 };
 ---

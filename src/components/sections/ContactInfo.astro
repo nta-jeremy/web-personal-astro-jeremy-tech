@@ -10,6 +10,7 @@ const { translations } = Astro.props;
 
 const email = EMAIL;
 const socials = Object.values(SOCIAL_LINKS);
+const emailEncoded = Buffer.from(email).toString('base64');
 ---
 
 <section class="contact-info">
@@ -19,13 +20,27 @@ const socials = Object.values(SOCIAL_LINKS);
   <div class="contact-methods">
     <div class="contact-method">
       <span class="contact-method-label">{t(translations, 'contact.emailLabel')}</span>
-      <a href={`mailto:${email}`} class="contact-link" target="_blank" rel="noopener noreferrer">
+      <a id="email-link" href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
           <rect x="3" y="5" width="18" height="14" rx="2"/>
           <path d="M3 7l9 6 9-6"/>
         </svg>
-        <span>{email}</span>
+        <span id="email-text"></span>
       </a>
+
+      <script is:inline define:vars={{ emailEncoded }}>
+        const email = atob(emailEncoded);
+        const link = document.getElementById('email-link');
+        const text = document.getElementById('email-text');
+        if (link) {
+          link.href = 'mailto:' + email;
+          link.removeAttribute('id');
+        }
+        if (text) {
+          text.textContent = email;
+          text.removeAttribute('id');
+        }
+      </script>
     </div>
 
     <div class="contact-method">
