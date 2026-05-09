@@ -42,21 +42,35 @@ export default function MobileHeader({ title = 'Jeremy' }: Props) {
   useEffect(() => {
     const mainScroll = document.querySelector('.main-scroll') as HTMLElement | null;
     if (!mainScroll) return;
+
+    const preventTouchMove = (e: TouchEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('.mobile-menu')) return;
+      e.preventDefault();
+    };
+
     const count = Number(document.body.dataset.scrollLock || 0);
     if (menuOpen) {
       document.body.dataset.scrollLock = String(count + 1);
       mainScroll.style.overflowY = 'hidden';
+      document.addEventListener('touchmove', preventTouchMove, { passive: false });
     } else {
       const next = Math.max(0, count - 1);
       document.body.dataset.scrollLock = String(next);
-      if (next === 0) mainScroll.style.overflowY = '';
+      if (next === 0) {
+        mainScroll.style.overflowY = '';
+        document.removeEventListener('touchmove', preventTouchMove);
+      }
     }
     return () => {
       if (menuOpen) {
         const c = Number(document.body.dataset.scrollLock || 0);
         const n = Math.max(0, c - 1);
         document.body.dataset.scrollLock = String(n);
-        if (n === 0 && mainScroll) mainScroll.style.overflowY = '';
+        if (n === 0 && mainScroll) {
+          mainScroll.style.overflowY = '';
+          document.removeEventListener('touchmove', preventTouchMove);
+        }
       }
     };
   }, [menuOpen]);
