@@ -61,7 +61,7 @@ const latest = posts[0];
 
       <a
         href={`/${locale === 'en' ? 'en/' : ''}blog/${latest.id.replace(/^(en|vi)\//, '')}/`}
-        style="font-size: 13px; color: var(--accent); font-weight: 500; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;"
+        style="font-size: 13px; color: var(--accent); font-weight: 500; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; min-height: 44px;"
       >
         {t(translations, 'home.latestRead')}
         <svg
@@ -93,7 +93,7 @@ const latest = posts[0];
         </span>
       </div>
       <p style="font-size: 14px; color: var(--muted); margin: 0; line-height: 1.6;">
-        Coming soon.
+        {t(translations, 'home.noArtifact')}
       </p>
     </div>
   )

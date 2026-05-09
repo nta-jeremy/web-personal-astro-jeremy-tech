@@ -16,7 +16,10 @@ const projects = allProjects.sort((a, b) => {
 const allCategories = Array.from(
   new Set(projects.flatMap((p) => p.data.categories || []))
 ).sort();
-const filterLabels = ['All', ...allCategories];
+const filterOptions = [
+  { value: 'all', label: t(translations, 'projects.filterAll') },
+  ...allCategories.map((c) => ({ value: c, label: c })),
+];
 ---
 
 <Layout
@@ -45,13 +48,13 @@ const filterLabels = ['All', ...allCategories];
 
     <div class="project-filters" data-filters>
       {
-        filterLabels.map((label, i) => (
+        filterOptions.map((opt, i) => (
           <button
             class={`project-filter-chip${i === 0 ? ' active' : ''}`}
-            data-filter={label}
+            data-filter={opt.value}
             type="button"
           >
-            {label}
+            {opt.label}
           </button>
         ))
       }
@@ -100,12 +103,14 @@ const filterLabels = ['All', ...allCategories];
                   ))}
                 </div>
               )}
-              <h2
-                class="serif"
-                style="font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 10px;"
-              >
-                {project.data.title}
-              </h2>
+              <a href={`/projects/${project.id}/`} style="text-decoration: none; color: inherit;">
+                <h2
+                  class="serif"
+                  style="font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 10px;"
+                >
+                  {project.data.title}
+                </h2>
+              </a>
               <p
                 style="font-size: 14.5px; color: var(--muted); line-height: 1.65; margin: 0 0 12px;"
               >
@@ -113,12 +118,10 @@ const filterLabels = ['All', ...allCategories];
               </p>
               {project.data.featured && (
                 <a
-                  href={project.data.liveUrl || project.data.url || project.data.repoUrl || project.data.github || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style="font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; text-transform: uppercase;"
+                  href={`/projects/${project.id}/`}
+                  style="font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; text-transform: uppercase; min-height: 44px;"
                 >
-                  {locale === 'vi' ? 'KHÁM PHÁ CHI TIẾT KỸ THUẬT' : 'EXPLORE TECHNICAL SPECS'}
+                  {t(translations, 'projects.explore')}
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -148,7 +151,7 @@ const filterLabels = ['All', ...allCategories];
 
     chips.forEach((chip) => {
       chip.addEventListener('click', () => {
-        const filter = chip.getAttribute('data-filter') || 'All';
+        const filter = chip.getAttribute('data-filter') || 'all';
 
         chips.forEach((c) => c.classList.remove('active'));
         chip.classList.add('active');
@@ -156,7 +159,7 @@ const filterLabels = ['All', ...allCategories];
         items.forEach((item) => {
           const catsRaw = item.getAttribute('data-categories');
           const cats: string[] = catsRaw ? JSON.parse(catsRaw) : [];
-          if (filter === 'All' || cats.includes(filter)) {
+          if (filter === 'all' || cats.includes(filter)) {
             (item as HTMLElement).style.display = '';
           } else {
             (item as HTMLElement).style.display = 'none';
@@ -185,6 +188,7 @@ const filterLabels = ['All', ...allCategories];
     cursor: pointer;
     transition: all 0.15s;
     font-family: inherit;
+    min-height: 44px;
   }
   .project-filter-chip:hover {
     border-color: var(--ink);

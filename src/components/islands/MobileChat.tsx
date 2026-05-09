@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import ChatInterface from './ChatInterface';
 
 export interface Props {
@@ -19,6 +19,28 @@ export default function MobileChat({
   const handleClose = useCallback(() => {
     setOpen(false);
   }, []);
+
+  useEffect(() => {
+    const mainScroll = document.querySelector('.main-scroll') as HTMLElement | null;
+    if (!mainScroll) return;
+    const count = Number(document.body.dataset.scrollLock || 0);
+    if (open) {
+      document.body.dataset.scrollLock = String(count + 1);
+      mainScroll.style.overflowY = 'hidden';
+    } else {
+      const next = Math.max(0, count - 1);
+      document.body.dataset.scrollLock = String(next);
+      if (next === 0) mainScroll.style.overflowY = '';
+    }
+    return () => {
+      if (open) {
+        const c = Number(document.body.dataset.scrollLock || 0);
+        const n = Math.max(0, c - 1);
+        document.body.dataset.scrollLock = String(n);
+        if (n === 0 && mainScroll) mainScroll.style.overflowY = '';
+      }
+    };
+  }, [open]);
 
   if (open) {
     return (

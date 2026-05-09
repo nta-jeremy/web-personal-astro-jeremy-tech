@@ -1,17 +1,11 @@
 import { useState, useCallback, useEffect } from 'react';
 import LanguageToggle from './LanguageToggle';
 import ThemeToggle from './ThemeToggle';
+import { getTranslations, t } from '@/i18n/utils';
 
 interface Props {
   title?: string;
 }
-
-const navItems = [
-  { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-];
 
 function isActive(pathname: string, href: string) {
   const normalized = pathname.replace(/^\/en/, '') || '/';
@@ -26,11 +20,46 @@ export default function MobileHeader({ title = 'Jeremy' }: Props) {
   const [pathname, setPathname] = useState('');
 
   useEffect(() => {
-    setPathname(window.location.pathname);
+    const update = () => setPathname(window.location.pathname);
+    update();
+    document.addEventListener('astro:after-swap', update);
+    return () => document.removeEventListener('astro:after-swap', update);
   }, []);
+
+  const locale = pathname.startsWith('/en') ? 'en' : 'vi';
+  const translations = getTranslations(locale);
+
+  const navItems = [
+    { href: '/about', label: t(translations, 'nav.about') },
+    { href: '/projects', label: t(translations, 'nav.projects') },
+    { href: '/blog', label: t(translations, 'nav.blog') },
+    { href: '/contact', label: t(translations, 'nav.contact') },
+  ];
 
   const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  useEffect(() => {
+    const mainScroll = document.querySelector('.main-scroll') as HTMLElement | null;
+    if (!mainScroll) return;
+    const count = Number(document.body.dataset.scrollLock || 0);
+    if (menuOpen) {
+      document.body.dataset.scrollLock = String(count + 1);
+      mainScroll.style.overflowY = 'hidden';
+    } else {
+      const next = Math.max(0, count - 1);
+      document.body.dataset.scrollLock = String(next);
+      if (next === 0) mainScroll.style.overflowY = '';
+    }
+    return () => {
+      if (menuOpen) {
+        const c = Number(document.body.dataset.scrollLock || 0);
+        const n = Math.max(0, c - 1);
+        document.body.dataset.scrollLock = String(n);
+        if (n === 0 && mainScroll) mainScroll.style.overflowY = '';
+      }
+    };
+  }, [menuOpen]);
 
   return (
     <>
@@ -39,7 +68,7 @@ export default function MobileHeader({ title = 'Jeremy' }: Props) {
           onClick={toggleMenu}
           className="p-2 -ml-2 flex items-center justify-center"
           style={{ minWidth: 44, minHeight: 44 }}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={menuOpen ? t(translations, 'mobile.menuClose') : t(translations, 'mobile.menuOpen')}
           aria-expanded={menuOpen}
         >
           {menuOpen ? (

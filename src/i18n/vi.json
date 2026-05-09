@@ -23,7 +23,8 @@
     "ctaContact": "Bắt đầu cuộc trò chuyện",
     "ctaContactDesc": "Luôn chào đón hợp tác",
     "latestArtifact": "TÁC PHẨM MỚI NHẤT",
-    "latestRead": "Đọc bài"
+    "latestRead": "Đọc bài",
+    "noArtifact": "Sắp có."
   },
   "about": {
     "title": "Giới thiệu",
@@ -46,7 +47,13 @@
     "label": "DANH MỤC · KHO LƯU TRỮ 2026",
     "heading": "Các Tác Phẩm Chọn Lọc",
     "subtitle": "Bộ sưu tập được chọn lọc từ các dự án đã ship, thử nghiệm và khám phá kỹ thuật.",
-    "featured": "Nổi bật"
+    "featured": "Nổi bật",
+    "explore": "Khám phá chi tiết kỹ thuật",
+    "filterAll": "Tất cả"
+  },
+  "breadcrumb": {
+    "home": "Trang chủ",
+    "blog": "Blog"
   },
   "blog": {
     "title": "Bài Luận & Tác Phẩm",
@@ -58,7 +65,11 @@
     "prevPost": "Bài trước",
     "nextPost": "Bài tiếp",
     "draft": "Bản nháp",
-    "searchPlaceholder": "Tìm kiếm bài viết..."
+    "searchPlaceholder": "Tìm kiếm bài viết...",
+    "postNavAriaLabel": "Điều hướng bài viết",
+    "authorName": "Được viết bởi Jeremy Nguyen",
+    "authorDesc": "Hệ thống, bài luận, và các thử nghiệm thỉnh thoảng.",
+    "noPosts": "Chưa có bài viết nào."
   },
   "contact": {
     "title": "Liên hệ",
@@ -108,18 +119,33 @@
   },
   "meta": {
     "siteName": "Jeremy Nguyen",
-    "siteDescription": "Portfolio cá nhân của Jeremy Nguyen"
+    "siteDescription": "Portfolio cá nhân của Jeremy Nguyen",
+    "homeTitle": "Jeremy Nguyen · CTO & AI Builder"
   },
   "mobile": {
     "navAbout": "Giới thiệu",
     "navProjects": "Dự án",
     "navBlog": "Blog",
-    "navContact": "Liên hệ"
+    "navContact": "Liên hệ",
+    "menuOpen": "Mở menu",
+    "menuClose": "Đóng menu"
   },
   "sidebar": {
     "name": "Jeremy Nguyen",
     "title": "CTO · AI Builder",
     "settings": "Cài đặt",
     "support": "Hỗ trợ"
+  },
+  "projectDetail": {
+    "label": "Chi tiết dự án",
+    "techStack": "Công nghệ",
+    "liveSite": "Trang web",
+    "repository": "Mã nguồn"
+  },
+  "error404": {
+    "title": "404 — Không tìm thấy trang",
+    "heading": "404",
+    "subtitle": "Trang bạn tìm kiếm không tồn tại hoặc đã được di chuyển.",
+    "cta": "Về trang chủ"
   }
 }

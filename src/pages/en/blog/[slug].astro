@@ -67,8 +67,8 @@ const canonical = `${site}${archivePath}${slugify(post.id)}/`;
   <JsonLd
     schema="breadcrumb"
     breadcrumbs={[
-      { name: 'Home', item: 'https://jeremytech.io.vn/' },
-      { name: 'Blog', item: `https://jeremytech.io.vn${archivePath}` },
+      { name: t(translations, 'breadcrumb.home'), item: 'https://jeremytech.io.vn/' },
+      { name: t(translations, 'breadcrumb.blog'), item: `https://jeremytech.io.vn${archivePath}` },
       { name: data.title, item: canonical },
     ]}
   />
@@ -95,12 +95,12 @@ const canonical = `${site}${archivePath}${slugify(post.id)}/`;
     <div class="post-author">
       <div class="post-author-avatar" aria-hidden="true" />
       <div class="post-author-info">
-        <div class="post-author-name serif">Written by Jeremy Nguyen</div>
-        <div class="post-author-desc">Systems, essays, and occasional experiments.</div>
+        <div class="post-author-name serif">{t(translations, 'blog.authorName')}</div>
+        <div class="post-author-desc">{t(translations, 'blog.authorDesc')}</div>
       </div>
     </div>
 
-    <nav class="post-nav" aria-label={locale === 'vi' ? 'Điều hướng bài viết' : 'Post navigation'}>
+    <nav class="post-nav" aria-label={t(translations, 'blog.postNavAriaLabel')}>
       {prevPost && (
         <a href={`${archivePath}${slugify(prevPost.id)}`} class="nav-link nav-prev">
           <span class="nav-label">{t(translations, 'blog.prevPost')}</span>

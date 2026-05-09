@@ -23,7 +23,8 @@
     "ctaContact": "Start a conversation",
     "ctaContactDesc": "Collaborations welcome",
     "latestArtifact": "LATEST ARTIFACT",
-    "latestRead": "Read essay"
+    "latestRead": "Read essay",
+    "noArtifact": "Coming soon."
   },
   "about": {
     "title": "About",
@@ -46,7 +47,13 @@
     "label": "PORTFOLIO · ARCHIVE 2026",
     "heading": "Selected Artifacts",
     "subtitle": "A curated collection of shipped projects, experiments, and technical explorations.",
-    "featured": "Featured"
+    "featured": "Featured",
+    "explore": "Explore Technical Specs",
+    "filterAll": "All"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "blog": "Blog"
   },
   "blog": {
     "title": "Essays & Artifacts",
@@ -58,7 +65,11 @@
     "prevPost": "Previous",
     "nextPost": "Next",
     "draft": "Draft",
-    "searchPlaceholder": "Search articles..."
+    "searchPlaceholder": "Search articles...",
+    "postNavAriaLabel": "Post navigation",
+    "authorName": "Written by Jeremy Nguyen",
+    "authorDesc": "Systems, essays, and occasional experiments.",
+    "noPosts": "No posts yet."
   },
   "contact": {
     "title": "Contact",
@@ -108,18 +119,33 @@
   },
   "meta": {
     "siteName": "Jeremy Nguyen",
-    "siteDescription": "Personal portfolio of Jeremy Nguyen"
+    "siteDescription": "Personal portfolio of Jeremy Nguyen",
+    "homeTitle": "Jeremy Nguyen · CTO & AI Builder"
   },
   "mobile": {
     "navAbout": "About",
     "navProjects": "Projects",
     "navBlog": "Blog",
-    "navContact": "Contact"
+    "navContact": "Contact",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
   },
   "sidebar": {
     "name": "Jeremy Nguyen",
     "title": "CTO · AI Builder",
     "settings": "Settings",
     "support": "Support"
+  },
+  "projectDetail": {
+    "label": "Project Detail",
+    "techStack": "Tech Stack",
+    "liveSite": "Live Site",
+    "repository": "Repository"
+  },
+  "error404": {
+    "title": "404 — Page Not Found",
+    "heading": "404",
+    "subtitle": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to home"
   }
 }

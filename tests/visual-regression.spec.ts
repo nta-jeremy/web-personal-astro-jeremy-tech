@@ -19,6 +19,9 @@ const ALL_PAGES = [
   { name: 'projects', path: '/projects' },
   { name: 'blog', path: '/blog' },
   { name: 'contact', path: '/contact' },
+  { name: '404', path: '/404' },
+  { name: 'en-404', path: '/en/404' },
+  { name: 'project-detail', path: '/projects/portfolio/' },
 ];
 
 test.describe('Desktop Visual Regression', () => {

@@ -18,15 +18,12 @@ const blog = defineCollection({
 });
 
 const projects = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/projects' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    url: z.string().optional(),
-    github: z.string().optional(),
     tech: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     categories: z.array(z.string()).default([]),

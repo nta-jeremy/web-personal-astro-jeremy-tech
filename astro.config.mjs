@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
+import pagefind from 'astro-pagefind';
 
 export default defineConfig({
   site: 'https://jeremytech.io.vn',
@@ -13,7 +14,7 @@ export default defineConfig({
     functionPerRoute: true,
     imageService: 'compile',
   }),
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [react(), mdx(), sitemap(), pagefind()],
   compressHTML: true,
   inlineStylesheets: 'auto',
   prefetch: true,

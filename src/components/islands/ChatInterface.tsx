@@ -136,6 +136,7 @@ export default function ChatInterface({
           <button
             onClick={onClose}
             className="text-[var(--subtle)] hover:text-[var(--ink)] transition-colors"
+            style={{ minWidth: 44, minHeight: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             aria-label="Close"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">

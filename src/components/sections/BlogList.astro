@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { getTranslations, t } from '@/i18n/utils';
 import BlogCard from '@components/ui/BlogCard.astro';
 
 export interface Props {
@@ -7,6 +8,7 @@ export interface Props {
 }
 
 const { locale } = Astro.props;
+const translations = getTranslations(locale);
 
 const posts = await getCollection('blog', ({ data }) => {
   return !data.draft && data.locale === locale;
@@ -19,7 +21,7 @@ posts.sort((a, b) => {
 
 <div class="blog-list">
   {posts.length === 0 && (
-    <p class="empty-state">{locale === 'vi' ? 'Chưa có bài viết nào.' : 'No posts yet.'}</p>
+    <p class="empty-state">{t(translations, 'blog.noPosts')}</p>
   )}
   {posts.map((post) => (
     <BlogCard post={post} />
