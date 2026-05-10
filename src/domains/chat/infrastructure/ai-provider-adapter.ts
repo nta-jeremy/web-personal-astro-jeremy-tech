@@ -23,7 +23,44 @@ function buildSystemPrompt(context: string, lang: 'en' | 'vi'): string {
   return `${instruction}\n\nContext:\n${context}`;
 }
 
-class OpenAIProvider implements AIProvider {
+async function* parseSSEStream(
+  reader: ReadableStreamDefaultReader<Uint8Array>,
+  extractContent: (parsed: unknown) => string | undefined
+): AsyncIterable<string> {
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data: ')) continue;
+        const json = trimmed.slice(6).trim();
+        if (json === '[DONE]') return;
+        if (!json) continue;
+
+        try {
+          const parsed = JSON.parse(json);
+          const content = extractContent(parsed);
+          if (content) yield content;
+        } catch {
+          // ignore malformed JSON
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
+
+export class OpenAIProvider implements AIProvider {
   private client: OpenAI | null = null;
 
   constructor(apiKey: string | undefined) {
@@ -56,7 +93,7 @@ class OpenAIProvider implements AIProvider {
   }
 }
 
-class GeminiProvider implements AIProvider {
+export class GeminiProvider implements AIProvider {
   private apiKey: string | undefined;
 
   constructor(apiKey: string | undefined) {
@@ -127,7 +164,7 @@ class GeminiProvider implements AIProvider {
   }
 }
 
-class ClaudeProvider implements AIProvider {
+export class ClaudeProvider implements AIProvider {
   private client: Anthropic | null = null;
 
   constructor(apiKey: string | undefined) {
@@ -160,37 +197,145 @@ class ClaudeProvider implements AIProvider {
   }
 }
 
-export function createProviderChain(env: {
-  OPENAI_API_KEY?: string;
-  GEMINI_API_KEY?: string;
-  ANTHROPIC_API_KEY?: string;
-}): AIProvider[] {
-  return [
-    new OpenAIProvider(env.OPENAI_API_KEY),
-    new GeminiProvider(env.GEMINI_API_KEY),
-    new ClaudeProvider(env.ANTHROPIC_API_KEY),
-  ];
+export class YescaleProvider implements AIProvider {
+  private apiKey: string;
+  private model: string;
+
+  constructor(apiKey: string, model = 'gemini-2.5-flash-lite') {
+    this.apiKey = apiKey;
+    this.model = model;
+  }
+
+  async *sendMessage(params: SendMessageParams): AsyncIterable<StreamChunk> {
+    const url = 'https://api.yescale.io/v1/chat/completions';
+    const body = {
+      model: this.model,
+      messages: [
+        { role: 'system', content: buildSystemPrompt(params.context, params.lang) },
+        { role: 'user', content: params.message },
+      ],
+      max_tokens: MAX_TOKENS,
+      stream: true,
+      temperature: 0.7,
+    };
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${this.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+
+    if (!response.ok || !response.body) {
+      throw new Error(`Yescale API error: ${response.status}`);
+    }
+
+    yield* parseSSEStream(response.body.getReader(), (parsed) => {
+      return (parsed as { choices?: [{ delta?: { content?: string } }] })?.choices?.[0]?.delta?.content;
+    });
+  }
+}
+
+export class DeepseekProvider implements AIProvider {
+  private apiKey: string;
+  private model: string;
+
+  constructor(apiKey: string, model = 'deepseek-v4-flash') {
+    this.apiKey = apiKey;
+    this.model = model;
+  }
+
+  async *sendMessage(params: SendMessageParams): AsyncIterable<StreamChunk> {
+    const url = 'https://api.deepseek.com/chat/completions';
+    const body = {
+      model: this.model,
+      messages: [
+        { role: 'system', content: buildSystemPrompt(params.context, params.lang) },
+        { role: 'user', content: params.message },
+      ],
+      max_tokens: MAX_TOKENS,
+      stream: true,
+      temperature: 0.7,
+    };
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${this.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+
+    if (!response.ok || !response.body) {
+      throw new Error(`Deepseek API error: ${response.status}`);
+    }
+
+    yield* parseSSEStream(response.body.getReader(), (parsed) => {
+      return (parsed as { choices?: [{ delta?: { content?: string } }] })?.choices?.[0]?.delta?.content;
+    });
+  }
+}
+
+export function parseProviderPriority(env?: string): string[] {
+  const defaultOrder = ['yescale', 'deepseek', 'gemini', 'openai', 'anthropic'];
+  if (!env) return defaultOrder;
+
+  const order = env.split(',').map((s) => s.trim().toLowerCase());
+  const valid = new Set(defaultOrder);
+  return order.filter((p) => valid.has(p));
+}
+
+export function createProviderChain(env: Record<string, string | undefined>): AIProvider[] {
+  const priority = parseProviderPriority(env.AI_PROVIDER_PRIORITY);
+
+  const factories: Record<string, () => AIProvider | null> = {
+    yescale: () => (env.YESCALE_API_KEY ? new YescaleProvider(env.YESCALE_API_KEY, env.YESCALE_MODEL) : null),
+    deepseek: () => (env.DEEPSEEK_API_KEY ? new DeepseekProvider(env.DEEPSEEK_API_KEY, env.DEEPSEEK_MODEL) : null),
+    gemini: () => (env.GEMINI_API_KEY ? new GeminiProvider(env.GEMINI_API_KEY) : null),
+    openai: () => (env.OPENAI_API_KEY ? new OpenAIProvider(env.OPENAI_API_KEY) : null),
+    anthropic: () => (env.ANTHROPIC_API_KEY ? new ClaudeProvider(env.ANTHROPIC_API_KEY) : null),
+  };
+
+  return priority
+    .map((name) => factories[name]?.())
+    .filter((p): p is AIProvider => p !== null);
 }
 
 export async function* sendMessageWithFallback(
   params: SendMessageParams,
-  env: {
-    OPENAI_API_KEY?: string;
-    GEMINI_API_KEY?: string;
-    ANTHROPIC_API_KEY?: string;
-  }
+  env: Record<string, string | undefined>
 ): AsyncIterable<StreamChunk> {
   const providers = createProviderChain(env);
   let lastError: Error | undefined;
 
   for (const provider of providers) {
+    let hasYielded = false;
     try {
-      yield* provider.sendMessage(params);
+      for await (const chunk of provider.sendMessage(params)) {
+        hasYielded = true;
+        yield chunk;
+      }
       return;
     } catch (err) {
+      if (hasYielded) {
+        throw err instanceof Error ? err : new Error(String(err));
+      }
       lastError = err instanceof Error ? err : new Error(String(err));
     }
   }
 
-  throw lastError || new Error('All AI providers failed');
+  throw new Error(`All AI providers failed${lastError ? ': ' + lastError.message : ''}`);
 }

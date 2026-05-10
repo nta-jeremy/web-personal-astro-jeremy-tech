@@ -120,6 +120,11 @@ export async function POST(context: APIContext): Promise<Response> {
       ? (runtimeEnv as Record<string, string>)
       : {};
   const env = {
+    AI_PROVIDER_PRIORITY: envMap.AI_PROVIDER_PRIORITY,
+    YESCALE_API_KEY: envMap.YESCALE_API_KEY,
+    YESCALE_MODEL: envMap.YESCALE_MODEL,
+    DEEPSEEK_API_KEY: envMap.DEEPSEEK_API_KEY,
+    DEEPSEEK_MODEL: envMap.DEEPSEEK_MODEL,
     OPENAI_API_KEY: envMap.OPENAI_API_KEY,
     GEMINI_API_KEY: envMap.GEMINI_API_KEY,
     ANTHROPIC_API_KEY: envMap.ANTHROPIC_API_KEY,
