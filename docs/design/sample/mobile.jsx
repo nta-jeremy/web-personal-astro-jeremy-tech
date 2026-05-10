@@ -15,7 +15,7 @@ function MHome() {
         <h1 className="serif" style={{ fontSize: 38, fontWeight: 500, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 10px' }}>
           Hello, I'm <em style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Jeremy</em> 👋
         </h1>
-        <div style={{ fontSize: 14, color: 'var(--muted)', marginBottom: 32 }}>CTO · Builder · Writer</div>
+        <div style={{ fontSize: 14, color: 'var(--muted)', marginBottom: 32 }}>Product Engineer / Solo Builder · Writer</div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, textAlign: 'left' }}>
           {[
@@ -81,9 +81,10 @@ function MAbout() {
         </div>
         <div style={{ fontSize: 10, color: 'var(--accent)', letterSpacing: '0.18em', fontWeight: 600, marginBottom: 12 }}>CAREER TRAJECTORY</div>
         {[
-          { yr: '2024 — PRESENT', t: 'Principal Architect @ Synthesis AI', o: 'Leading development of generative design frameworks for enterprise-scale cognitive environments.' },
-          { yr: '2021 — 2023', t: 'Head of Product @ Monolith Systems', o: 'Spearheaded the transition from traditional cloud storage to semantic data mapping solutions.' },
-          { yr: '2018 — 2021', t: 'Senior Interaction Designer @ Lab01', o: "Researched and deployed the first iteration of Jeremy's methodology." },
+          { yr: '2024 — PRESENT', t: 'Product Engineer & Solo Builder', o: 'Building AI-native products end-to-end. Fullstack engineering turned product.' },
+          { yr: '2021 — 2024', t: 'Senior Software Engineer', o: 'Shipped production systems across frontend, backend, and infrastructure.' },
+          { yr: '2019 — 2021', t: 'Software Engineer', o: 'Built real-time data systems and API platforms for early-stage products.' },
+          { yr: '2017 — 2019', t: 'Junior Developer', o: 'Built tooling and web infrastructure for ML inference systems.' },
         ].map((r, i) => (
           <div key={i} style={{ borderTop: i === 0 ? '1px solid var(--border)' : 'none', borderBottom: '1px solid var(--border)', padding: '14px 0' }}>
             <div style={{ fontSize: 10, color: 'var(--subtle)', letterSpacing: '0.1em', fontFamily: 'JetBrains Mono, monospace', marginBottom: 4 }}>{r.yr}</div>

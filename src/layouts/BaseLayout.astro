@@ -14,10 +14,31 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  type?: string;
   noindex?: boolean;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImageAlt?: string;
+  locale?: string;
+  publishedDate?: string;
+  modifiedDate?: string;
+  tags?: string[];
 }
 
-const { title, description = 'Personal portfolio of Jeremy Nguyen', image, noindex } = Astro.props;
+const {
+  title,
+  description = 'Personal portfolio of Jeremy Nguyen',
+  image,
+  type,
+  noindex,
+  ogTitle,
+  ogDescription,
+  ogImageAlt,
+  locale,
+  publishedDate,
+  modifiedDate,
+  tags,
+} = Astro.props;
 
 const { pathname } = Astro.url;
 const isEn = pathname.startsWith('/en');
@@ -41,9 +62,17 @@ const hreflang = [
       title={title}
       description={description}
       image={image}
+      type={type}
       canonicalUrl={canonical}
       hreflang={hreflang}
       noindex={noindex}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+      ogImageAlt={ogImageAlt}
+      locale={locale || (isEn ? 'en_US' : 'vi_VN')}
+      publishedDate={publishedDate}
+      modifiedDate={modifiedDate}
+      tags={tags}
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <style set:html={globalCss}></style>

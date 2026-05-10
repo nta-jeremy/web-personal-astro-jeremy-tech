@@ -11,23 +11,23 @@
   "timeline": [
     {
       "year": "2024",
-      "title": "CTO & Founder",
-      "desc": "Xây dựng các sản phẩm AI-native và tư vấn kiến trúc hệ thống."
+      "title": "Product Engineer & Solo Builder",
+      "desc": "Xây dựng các sản phẩm AI-native từ đầu đến cuối và tư vấn kiến trúc hệ thống."
     },
     {
       "year": "2021",
-      "title": "Principal Engineer",
-      "desc": "Dẫn dắt migration nền tảng sang microservices dựa trên sự kiện."
+      "title": "Senior Software Engineer (Fullstack)",
+      "desc": "Ship các hệ thống production xuyên suốt frontend, backend, và hạ tầng quy mô lớn."
     },
     {
-      "year": "2018",
-      "title": "Engineering Lead",
-      "desc": "Xây dựng và phát triển nhóm kỹ thuật 20 người từ con số 0."
+      "year": "2019",
+      "title": "Software Engineer (Fullstack)",
+      "desc": "Xây dựng hệ thống dữ liệu thời gian thực và nền tảng API cho sản phẩm giai đoạn đầu."
     },
     {
-      "year": "2015",
-      "title": "Senior Developer",
-      "desc": "Phát triển full-stack với trọng tâm là hệ thống dữ liệu thời gian thực."
+      "year": "2017",
+      "title": "Junior Developer",
+      "desc": "Làm quen với web stack và công cụ ML inference."
     }
   ]
 }

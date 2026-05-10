@@ -1,28 +1,28 @@
 {
   "name": "Jeremy Nguyen",
-  "title": "CTO & AI Builder",
-  "bio": "Jeremy Nguyen is a CTO and AI builder with deep expertise in neural architectures, distributed systems, and developer experience. He designs and ships AI-native products while consulting on system architecture for high-growth teams.",
+  "title": "Product Engineer & Solo Builder",
+  "bio": "Jeremy Nguyen is a Product Engineer and solo builder with 5+ years of fullstack experience. He ships AI-native products end-to-end — from neural architecture to interface semantics. Previously a Software Engineer building production-grade distributed systems.",
   "philosophy": "Build lean, ship fast, and let systems evolve through constraint. Jeremy believes the best engineering happens at the intersection of deep technical rigor and ruthless product focus. He favors event-driven architectures, functional programming patterns, and tooling that removes friction from the developer workflow.",
   "career": [
     {
       "year": "2024",
-      "role": "CTO & Founder",
-      "summary": "Building AI-native products and consulting on system architecture."
+      "role": "Product Engineer & Solo Builder",
+      "summary": "Building AI-native products end-to-end and consulting on system architecture."
     },
     {
       "year": "2021",
-      "role": "Principal Engineer",
-      "summary": "Led platform migration to event-driven microservices at scale."
+      "role": "Senior Software Engineer (Fullstack)",
+      "summary": "Shipped production systems across frontend, backend, and infrastructure at scale."
     },
     {
-      "year": "2018",
-      "role": "Engineering Lead",
-      "summary": "Built and grew a 20-person engineering team from scratch."
+      "year": "2019",
+      "role": "Software Engineer (Fullstack)",
+      "summary": "Built real-time data systems and API platforms for early-stage products."
     },
     {
-      "year": "2015",
-      "role": "Senior Developer",
-      "summary": "Full-stack development with focus on real-time data systems."
+      "year": "2017",
+      "role": "Junior Developer",
+      "summary": "Cut teeth on web stacks and ML inference tooling."
     }
   ],
   "domains": [

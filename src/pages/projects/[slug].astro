@@ -28,9 +28,11 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title={project.data.title}
+  title={`${project.data.title} · ${t(translations, 'projects.heading')} · Jeremy Nguyen`}
   description={project.data.description}
-  image={project.data.image}
+  ogTitle={project.data.title}
+  ogDescription={project.data.description}
+  image={project.data.image || '/og-default.png'}
 >
   <JsonLd schema="breadcrumb" breadcrumbs={breadcrumbs} />
 

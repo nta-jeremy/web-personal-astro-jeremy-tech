@@ -11,7 +11,9 @@ const translations = getTranslations(locale as 'en' | 'vi');
 
 <Layout
   title={t(translations, 'meta.homeTitle')}
-  description={t(translations, 'home.subtitle')}
+  description={t(translations, 'meta.homeDescription')}
+  ogTitle={t(translations, 'meta.ogHomeTitle')}
+  image="/og-default.png"
 >
   <div class="artifact home-artifact">
     <HomeHero locale={locale as 'en' | 'vi'} />

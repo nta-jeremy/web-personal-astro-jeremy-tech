@@ -61,6 +61,8 @@ plans/**/*
 !plans/templates/*
 screenshots/*
 docs/screenshots/*
+docs/design/sample/*
+docs/idea/*
 logs.txt
 test-ck
 __pycache__
@@ -92,3 +94,4 @@ external/
 
 # Git worktrees (local development only)
 worktrees/
+

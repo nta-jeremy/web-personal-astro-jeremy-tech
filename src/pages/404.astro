@@ -14,7 +14,7 @@ const cta = t(translations, 'error404.cta');
 const homeUrl = getRelativeLocaleUrl(locale, '/');
 ---
 
-<Layout title={title} noindex={true}>
+<Layout title={title} description={t(translations, 'meta.error404Description')} noindex={true} image="/og-default.png">
   <div class="error-page">
     <div class="error-content">
       <h1 class="error-heading">{heading}</h1>

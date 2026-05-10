@@ -13,7 +13,7 @@
   "home": {
     "status": "ĐANG ONLINE",
     "title": "Xin chào, mình là Jeremy.",
-    "subtitle": "Một CTO và người xây dựng AI, làm việc trên ranh giới giữa hệ thống phân tán và nhận thức con người. Mình viết, ship sản phẩm, và thỉnh thoảng xuất bản bài luận từ xưởng của mình.",
+    "subtitle": "Một Product Engineer và solo builder, làm việc trên ranh giới giữa hệ thống phân tán và nhận thức con người. Mình viết, ship sản phẩm, và thỉnh thoảng xuất bản bài luận từ xưởng của mình.",
     "ctaEssays": "Đọc bài luận",
     "ctaEssaysDesc": "28 bài về hệ thống & nghề",
     "ctaWork": "Xem dự án",
@@ -37,10 +37,10 @@
     "domainsLabel": "LĨNH VỰC KỸ THUẬT",
     "timelineLabel": "LỘ TRÌNH SỰ NGHIỆP",
     "timeline": [
-      { "year": "2024", "title": "CTO & Founder", "desc": "Xây dựng các sản phẩm AI-native và tư vấn kiến trúc hệ thống." },
-      { "year": "2021", "title": "Principal Engineer", "desc": "Dẫn dắt migration nền tảng sang microservices dựa trên sự kiện." },
-      { "year": "2018", "title": "Engineering Lead", "desc": "Xây dựng và phát triển nhóm kỹ thuật 20 người từ con số 0." },
-      { "year": "2015", "title": "Senior Developer", "desc": "Phát triển full-stack với trọng tâm là hệ thống dữ liệu thời gian thực." }
+      { "year": "2024", "title": "Product Engineer & Solo Builder", "desc": "Xây dựng các sản phẩm AI-native từ đầu đến cuối và tư vấn kiến trúc hệ thống." },
+      { "year": "2021", "title": "Senior Software Engineer (Fullstack)", "desc": "Ship các hệ thống production xuyên suốt frontend, backend, và hạ tầng quy mô lớn." },
+      { "year": "2019", "title": "Software Engineer (Fullstack)", "desc": "Xây dựng hệ thống dữ liệu thời gian thực và nền tảng API cho sản phẩm giai đoạn đầu." },
+      { "year": "2017", "title": "Junior Developer", "desc": "Làm quen với web stack và công cụ ML inference." }
     ]
   },
   "projects": {
@@ -119,8 +119,24 @@
   },
   "meta": {
     "siteName": "Jeremy Nguyen",
-    "siteDescription": "Portfolio cá nhân của Jeremy Nguyen",
-    "homeTitle": "Jeremy Nguyen · CTO & AI Builder"
+    "siteDescription": "Portfolio và blog cá nhân của Jeremy Nguyen. Viết về AI, system design, và những dòng code tôi tin tưởng.",
+    "homeTitle": "Jeremy Nguyen · Product Engineer & Solo Builder · Portfolio",
+    "homeDescription": "Mình ship các sản phẩm AI-native từ đầu đến cuối. Hơn 5 năm là Software Engineer (Fullstack), giờ tập trung vào product engineering. Đây là nơi mình chia sẻ những gì đã học được.",
+    "ogHomeTitle": "Jeremy Nguyen — Product Engineer & Solo Builder · Kiến trúc sư Nhận thức",
+    "aboutTitle": "Giới thiệu · Jeremy Nguyen — Hành trình từ Developer đến Product Engineer",
+    "aboutDescription": "Hơn 5 năm trong ngành: từ Junior Developer, Software Engineer, đến Senior Software Engineer và Product Engineer. Tôi tin vào code được ship.",
+    "ogAboutTitle": "Hành trình của Jeremy — Từ Developer đến Product Engineer & Solo Builder",
+    "projectsTitle": "Các Tác Phẩm Chọn Lọc · Jeremy Nguyen",
+    "projectsDescription": "Những project tôi đã ship: từ hệ thống AI production đến các experiment kỹ thuật. Mỗi dòng code là một nét vẽ.",
+    "ogProjectsTitle": "Các Tác Phẩm Chọn Lọc — Từ AI Production đến Experiments",
+    "blogTitle": "Bài Luận & Tác Phẩm · Jeremy Nguyen",
+    "blogDescription": "Viết về LLM architecture, system design, và triết lý công nghệ. Không phải tutorial copy-paste — mà là suy nghĩ thực sự.",
+    "ogBlogTitle": "Bài Luận & Tác Phẩm — Suy nghĩ về AI và System Design",
+    "contactTitle": "Liên hệ · Jeremy Nguyen — Hợp tác & Trò chuyện",
+    "contactDescription": "Muốn hợp tác, thuê tôi làm consultant, hoặc chỉ đơn giản là trò chuyện về AI? Cửa luôn mở.",
+    "ogContactTitle": "Liên hệ — Cửa luôn mở cho những cuộc trò chuyện thú vị",
+    "error404Title": "Không tìm thấy · 404",
+    "error404Description": "Trang này không tồn tại. Nhưng đừng lo, còn nhiều thứ hay ho khác để khám phá."
   },
   "mobile": {
     "navAbout": "Giới thiệu",
@@ -132,7 +148,7 @@
   },
   "sidebar": {
     "name": "Jeremy Nguyen",
-    "title": "CTO · AI Builder",
+    "title": "Product Engineer / Solo Builder",
     "settings": "Cài đặt",
     "support": "Hỗ trợ"
   },

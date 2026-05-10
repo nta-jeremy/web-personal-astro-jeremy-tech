@@ -50,7 +50,17 @@ const site = 'https://jeremytech.io.vn';
 const canonical = `${site}${archivePath}${slugify(post.id)}/`;
 ---
 
-<Layout title={data.title} description={data.description}>
+<Layout
+  title={`${data.title} · ${t(translations, 'blog.title')} · Jeremy Nguyen`}
+  description={data.description}
+  ogTitle={data.title}
+  ogDescription={data.description}
+  image={data.image || '/og-default.png'}
+  type="article"
+  publishedDate={new Date(data.pubDate).toISOString()}
+  modifiedDate={data.updatedDate ? new Date(data.updatedDate).toISOString() : new Date(data.pubDate).toISOString()}
+  tags={data.tags}
+>
   <JsonLd
     schema="article"
     data={{

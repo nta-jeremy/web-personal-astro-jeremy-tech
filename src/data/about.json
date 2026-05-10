@@ -11,23 +11,23 @@
   "timeline": [
     {
       "year": "2024",
-      "title": "CTO & Founder",
-      "desc": "Building AI-native products and consulting on system architecture."
+      "title": "Product Engineer & Solo Builder",
+      "desc": "Building AI-native products end-to-end and consulting on system architecture."
     },
     {
       "year": "2021",
-      "title": "Principal Engineer",
-      "desc": "Led platform migration to event-driven microservices at scale."
+      "title": "Senior Software Engineer (Fullstack)",
+      "desc": "Shipped production systems across frontend, backend, and infrastructure at scale."
     },
     {
-      "year": "2018",
-      "title": "Engineering Lead",
-      "desc": "Built and grew a 20-person engineering team from scratch."
+      "year": "2019",
+      "title": "Software Engineer (Fullstack)",
+      "desc": "Built real-time data systems and API platforms for early-stage products."
     },
     {
-      "year": "2015",
-      "title": "Senior Developer",
-      "desc": "Full-stack development with focus on real-time data systems."
+      "year": "2017",
+      "title": "Junior Developer",
+      "desc": "Cut teeth on web stacks and ML inference tooling."
     }
   ]
 }

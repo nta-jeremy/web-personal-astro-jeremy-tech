@@ -13,7 +13,7 @@
   "home": {
     "status": "CURRENTLY ONLINE",
     "title": "Hi, I'm Jeremy.",
-    "subtitle": "A CTO and AI builder working on the seam between distributed systems and human cognition. I write, ship, and occasionally publish essays from my workshop.",
+    "subtitle": "A Product Engineer and solo builder working on the seam between distributed systems and human cognition. I write, ship, and occasionally publish essays from my workshop.",
     "ctaEssays": "Read the essays",
     "ctaEssaysDesc": "28 pieces on systems & craft",
     "ctaWork": "See the work",
@@ -37,10 +37,10 @@
     "domainsLabel": "TECHNICAL DOMAINS",
     "timelineLabel": "CAREER TRAJECTORY",
     "timeline": [
-      { "year": "2024", "title": "CTO & Founder", "desc": "Building AI-native products and consulting on system architecture." },
-      { "year": "2021", "title": "Principal Engineer", "desc": "Led platform migration to event-driven microservices at scale." },
-      { "year": "2018", "title": "Engineering Lead", "desc": "Built and grew a 20-person engineering team from scratch." },
-      { "year": "2015", "title": "Senior Developer", "desc": "Full-stack development with focus on real-time data systems." }
+      { "year": "2024", "title": "Product Engineer & Solo Builder", "desc": "Building AI-native products end-to-end and consulting on system architecture." },
+      { "year": "2021", "title": "Senior Software Engineer (Fullstack)", "desc": "Shipped production systems across frontend, backend, and infrastructure at scale." },
+      { "year": "2019", "title": "Software Engineer (Fullstack)", "desc": "Built real-time data systems and API platforms for early-stage products." },
+      { "year": "2017", "title": "Junior Developer", "desc": "Cut teeth on web stacks and ML inference tooling." }
     ]
   },
   "projects": {
@@ -119,8 +119,24 @@
   },
   "meta": {
     "siteName": "Jeremy Nguyen",
-    "siteDescription": "Personal portfolio of Jeremy Nguyen",
-    "homeTitle": "Jeremy Nguyen · CTO & AI Builder"
+    "siteDescription": "Personal portfolio and blog by Jeremy Nguyen. Writing about AI, system design, and the lines of code I believe in.",
+    "homeTitle": "Jeremy Nguyen · Product Engineer & Solo Builder · Portfolio",
+    "homeDescription": "I ship AI-native products end-to-end. 5+ years as a Software Engineer (Fullstack), now focused on product engineering. This is where I share what I've learned along the way.",
+    "ogHomeTitle": "Jeremy Nguyen — Product Engineer & Solo Builder · Cognitive Architect",
+    "aboutTitle": "About · Jeremy Nguyen — From Developer to Product Engineer",
+    "aboutDescription": "5+ years in the industry: from Junior Developer and Software Engineer to Senior Software Engineer and Product Engineer. I believe in code that ships.",
+    "ogAboutTitle": "Jeremy's Journey — From Developer to Product Engineer & Solo Builder",
+    "projectsTitle": "Selected Artifacts · Jeremy Nguyen",
+    "projectsDescription": "Projects I've shipped: from production AI systems to technical experiments. Every line of code is a stroke in a larger portrait.",
+    "ogProjectsTitle": "Selected Artifacts — From AI Production to Experiments",
+    "blogTitle": "Essays & Artifacts · Jeremy Nguyen",
+    "blogDescription": "Writing about LLM architecture, system design, and the philosophy of technology. Not copy-paste tutorials — real thoughts.",
+    "ogBlogTitle": "Essays & Artifacts — Thoughts on AI and System Design",
+    "contactTitle": "Contact · Jeremy Nguyen — Collaborate & Chat",
+    "contactDescription": "Want to collaborate, hire me as a consultant, or just chat about AI? The door is always open.",
+    "ogContactTitle": "Contact — The Door Is Always Open for Interesting Conversations",
+    "error404Title": "Not Found · 404",
+    "error404Description": "This page doesn't exist. But don't worry — there's plenty more to explore."
   },
   "mobile": {
     "navAbout": "About",
@@ -132,7 +148,7 @@
   },
   "sidebar": {
     "name": "Jeremy Nguyen",
-    "title": "CTO · AI Builder",
+    "title": "Product Engineer / Solo Builder",
     "settings": "Settings",
     "support": "Support"
   },

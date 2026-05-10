@@ -27,7 +27,7 @@ function HomeA() {
               <StreamText text="Hello, I'm Jeremy" /> <span style={{ display: 'inline-block', animation: 'wave 1.4s ease-in-out 0.8s' }}>👋</span>
             </h1>
             <div style={{ color: 'var(--muted)', fontSize: 17, marginBottom: 44 }}>
-              CTO · Builder · Writer
+              Product Engineer / Solo Builder · Writer
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, maxWidth: 460, margin: '0 auto' }}>
               {chips.map(c => (
@@ -64,7 +64,7 @@ function HomeB() {
               <StreamText text="Hi, I'm Jeremy." />
             </h1>
             <p style={{ fontSize: 19, lineHeight: 1.55, color: 'var(--ink-2)', maxWidth: 560, margin: '0 0 40px' }}>
-              A CTO and AI builder working on the seam between distributed systems and human cognition. I write, ship, and occasionally publish essays from my workshop.
+              A Product Engineer and solo builder working on the seam between distributed systems and human cognition. I write, ship, and occasionally publish essays from my workshop.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
@@ -162,10 +162,10 @@ function AboutPage() {
               <div style={{ fontSize: 10.5, letterSpacing: '0.18em', color: 'var(--accent)', fontWeight: 600, marginBottom: 16 }}>CAREER TRAJECTORY</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                 {[
-                  { yr: '2024 — PRESENT', t: 'Chief Technology Officer', o: 'Leading AI research and infrastructure at Artifact Labs, defining the future of cognitive interfaces.' },
-                  { yr: '2021 — 2023', t: 'VP of Engineering', o: 'Scaled distributed systems for a high-growth fintech startup, managing a team of 40+ engineers.' },
-                  { yr: '2018 — 2021', t: 'Lead Systems Architect', o: 'Designed modern backend architectures for global supply chain logistics platforms using Rust.' },
-                  { yr: '2015 — 2018', t: 'Senior Software Engineer', o: 'Built tooling and infrastructure for early-stage ML inference systems.' },
+                  { yr: '2024 — PRESENT', t: 'Product Engineer & Solo Builder', o: 'Building AI-native products end-to-end. Fullstack engineering turned product.' },
+                  { yr: '2021 — 2024', t: 'Senior Software Engineer', o: 'Shipped production systems across frontend, backend, and infrastructure.' },
+                  { yr: '2019 — 2021', t: 'Software Engineer', o: 'Built real-time data systems and API platforms for early-stage products.' },
+                  { yr: '2017 — 2019', t: 'Junior Developer', o: 'Built tooling and web infrastructure for ML inference systems.' },
                 ].map((r, i) => (
                   <div key={i} style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: 24, padding: '18px 0', borderTop: i === 0 ? 'none' : '1px solid var(--border)' }}>
                     <div style={{ fontSize: 11, color: 'var(--subtle)', letterSpacing: '0.1em', paddingTop: 4, fontFamily: 'JetBrains Mono, monospace' }}>{r.yr}</div>

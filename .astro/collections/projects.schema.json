@@ -42,15 +42,6 @@
             }
           ]
         },
-        "heroImage": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "github": {
-          "type": "string"
-        },
         "tech": {
           "type": "array",
           "items": {

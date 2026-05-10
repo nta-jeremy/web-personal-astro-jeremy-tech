@@ -15,7 +15,7 @@ function isActive(pathname: string, href: string) {
   return normalized === href || normalized.startsWith(href + '/');
 }
 
-export default function MobileHeader({ title = 'Jeremy' }: Props) {
+export default function MobileHeader({ title = 'Jeremy Tech' }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [pathname, setPathname] = useState('');
 
@@ -95,10 +95,10 @@ export default function MobileHeader({ title = 'Jeremy' }: Props) {
             </svg>
           )}
         </button>
-        <div className="mtop-title">{title}</div>
-        <div className="flex items-center gap-1 text-accent text-xs font-semibold">
-          <span className="font-serif">文A</span>
-        </div>
+        <a href="/" className="mtop-title">{title}</a>
+        <a href="/">
+          <img src="/logo/logo_2.svg" alt="Jeremy Tech" width="28" height="28" className="rounded-md" />
+        </a>
       </div>
 
       {menuOpen && (

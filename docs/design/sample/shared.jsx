@@ -34,7 +34,7 @@ function Sidebar({ active = 'about' }) {
         <div className="avatar" />
         <div>
           <div className="side-name">Jeremy Nguyen</div>
-          <div className="side-title">CTO · AI Builder</div>
+          <div className="side-title">Product Engineer / Solo Builder</div>
         </div>
       </div>
       <nav className="side-nav">

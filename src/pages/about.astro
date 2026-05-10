@@ -16,13 +16,13 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Jeremy Nguyen',
-  jobTitle: 'CTO · AI Builder',
+  jobTitle: 'Product Engineer / Solo Builder',
   url: SITE_URL,
   sameAs: SAME_AS,
 };
 ---
 
-<Layout title={t(translations, 'about.title')}>
+<Layout title={t(translations, 'meta.aboutTitle')} description={t(translations, 'meta.aboutDescription')} ogTitle={t(translations, 'meta.ogAboutTitle')} image="/og-default.png">
   <div class="artifact about-page">
     <AboutBio translations={translations} />
     <AboutPhilosophy translations={translations} />

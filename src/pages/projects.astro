@@ -15,8 +15,10 @@ const projects = allProjects.sort((a, b) => {
 ---
 
 <Layout
-  title={t(translations, 'projects.heading')}
-  description={t(translations, 'projects.subtitle')}
+  title={t(translations, 'meta.projectsTitle')}
+  description={t(translations, 'meta.projectsDescription')}
+  ogTitle={t(translations, 'meta.ogProjectsTitle')}
+  image="/og-default.png"
 >
   <div class="artifact">
     <div

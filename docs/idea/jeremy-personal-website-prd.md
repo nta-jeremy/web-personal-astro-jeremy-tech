@@ -33,7 +33,7 @@
 
 ### 1.1 Problem Statement
 
-Traditional portfolio websites are static, generic, and forgettable. Jeremy's personal website must stand apart by delivering an AI-native experience — one that immediately signals his identity as a CTO and builder in the AI space.
+Traditional portfolio websites are static, generic, and forgettable. Jeremy's personal website must stand apart by delivering an AI-native experience — one that immediately signals his identity as a Product Engineer and builder in the AI space.
 
 The site adopts the Claude Desktop UI aesthetic as its design language: sidebar navigation, artifact-style content rendering, streaming text effects, and suggested prompt chips. Visitors interact with the site the way they would interact with an AI assistant — through familiar, purposeful UX patterns.
 

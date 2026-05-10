@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 5
     },
     "preserveOutput": "always",
     "projects": [
@@ -20,7 +20,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 5
         },
         "id": "chromium-desktop",
         "name": "chromium-desktop",
@@ -73,9 +73,51 @@
       "specs": [],
       "suites": [
         {
+          "title": "Desktop Visual Regression",
+          "file": "visual-regression.spec.ts",
+          "line": 27,
+          "column": 6,
+          "specs": [
+            {
+              "title": "home: screenshot both versions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5159,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:34.500Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-8d2e15d3ca624f8ee209",
+              "file": "visual-regression.spec.ts",
+              "line": 33,
+              "column": 5
+            }
+          ]
+        },
+        {
           "title": "Mobile Visual Regression",
           "file": "visual-regression.spec.ts",
-          "line": 56,
+          "line": 59,
           "column": 6,
           "specs": [
             {
@@ -93,15 +135,15 @@
                   "projectName": "chromium-desktop",
                   "results": [
                     {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 4448,
+                      "duration": 5179,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-04-23T18:00:42.979Z",
+                      "startTime": "2026-05-09T02:32:34.500Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -111,7 +153,575 @@
               ],
               "id": "78e23c5201ba1ea12e76-1b1a0d40b33bf48e9c34",
               "file": "visual-regression.spec.ts",
-              "line": 62,
+              "line": 65,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "Standalone Site Screenshots",
+          "file": "visual-regression.spec.ts",
+          "line": 91,
+          "column": 6,
+          "specs": [
+            {
+              "title": "desktop screenshot home",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1208,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:34.504Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-44ca48e5ddd86e95db76",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot home @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1175,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:34.512Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-960ff192343b07961253",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
+              "column": 5
+            },
+            {
+              "title": "desktop screenshot about",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1227,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:34.501Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-8972adf46e861d3910bf",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot about @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 872,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:36.057Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-ab4dd08623b9a1b722f0",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
+              "column": 5
+            },
+            {
+              "title": "desktop screenshot projects",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 793,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:36.094Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-874e83350f5f93719a69",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot projects @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 805,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:36.108Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-8bffdd553dc87bfb38af",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
+              "column": 5
+            },
+            {
+              "title": "desktop screenshot blog",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 809,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:36.910Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-520add7be9b13d2fb2c1",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot blog @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 890,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:36.934Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-7095226c711c7e6e62e6",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
+              "column": 5
+            },
+            {
+              "title": "desktop screenshot contact",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 902,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:36.940Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-2c11fcc16a2675d10932",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot contact @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 689,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:37.728Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-1eb5866b088016f02def",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
+              "column": 5
+            },
+            {
+              "title": "desktop screenshot 404",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 683,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:37.838Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-975c1542e788021258cd",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot 404 @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 659,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:37.850Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-239ee9f7844b00112378",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
+              "column": 5
+            },
+            {
+              "title": "desktop screenshot en-404",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 645,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:38.423Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-fc9292a1b69ab907c0e7",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot en-404 @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 677,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:38.521Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-a4f01d040cdcf23f5df4",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
+              "column": 5
+            },
+            {
+              "title": "desktop screenshot project-detail",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 695,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:38.533Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-ca64fe0177d6f6e98af3",
+              "file": "visual-regression.spec.ts",
+              "line": 93,
+              "column": 5
+            },
+            {
+              "title": "mobile screenshot project-detail @mobile",
+              "ok": true,
+              "tags": [
+                "mobile"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 650,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-09T02:32:39.074Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "78e23c5201ba1ea12e76-987d8a2e562ba238a4bb",
+              "file": "visual-regression.spec.ts",
+              "line": 103,
               "column": 5
             }
           ]
@@ -121,9 +731,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-04-23T18:00:42.604Z",
-    "duration": 4977.999000000001,
-    "expected": 1,
+    "startTime": "2026-05-09T02:32:33.288Z",
+    "duration": 6837.727,
+    "expected": 18,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

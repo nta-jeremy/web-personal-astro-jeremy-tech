@@ -10,7 +10,7 @@ const translations = getTranslations(locale as 'en' | 'vi');
 const pageTitle = t(translations, 'blog.title');
 ---
 
-<Layout title={pageTitle}>
+<Layout title={pageTitle} description={t(translations, 'meta.blogDescription')} ogTitle={t(translations, 'meta.ogBlogTitle')} image="/og-default.png">
   <JsonLd
     schema="webpage"
     data={{

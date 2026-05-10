@@ -7,7 +7,7 @@ const locale = Astro.currentLocale || 'vi';
 const translations = getTranslations(locale as 'en' | 'vi');
 ---
 
-<Layout title={t(translations, 'contact.title')} description={t(translations, 'contact.subtitle')}>
+<Layout title={t(translations, 'meta.contactTitle')} description={t(translations, 'meta.contactDescription')} ogTitle={t(translations, 'meta.ogContactTitle')} image="/og-default.png">
   <div class="artifact contact-page">
     <ContactPage translations={translations} locale={locale as 'en' | 'vi'} />
   </div>
