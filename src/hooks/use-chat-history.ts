@@ -56,6 +56,17 @@ export function createChatHistoryStore(options: StoreOptions = {}): StoreReturn 
 
   function load() {
     if (typeof sessionStorage === 'undefined') return;
+    const entries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    const nav = entries.length > 0 ? entries[entries.length - 1] : undefined;
+    if (nav?.type === 'reload') {
+      try {
+        sessionStorage.removeItem(storageKey);
+      } catch {
+        // ignore
+      }
+      messages = [];
+      return;
+    }
     try {
       const raw = sessionStorage.getItem(storageKey);
       if (raw) {
@@ -117,6 +128,9 @@ export function createChatHistoryStore(options: StoreOptions = {}): StoreReturn 
   }
 
   function subscribe(cb: () => void): () => void {
+    // Reset destroyed so the store can be reused after an Astro ClientRouter
+    // swap unmounts and then remounts the island.
+    destroyed = false;
     listeners = [...listeners, cb];
     return () => {
       listeners = listeners.filter((l) => l !== cb);
@@ -161,7 +175,10 @@ export function useChatHistory(options: StoreOptions = {}) {
 
   useEffect(() => {
     return () => {
-      storeCache.delete(storageKey);
+      // Astro ClientRouter swaps unmount/remount islands across soft
+      // navigations. Keep the cached store alive so chat history survives
+      // route changes; only clear listeners. The next mount will re-subscribe
+      // via useSyncExternalStore, which also resets the destroyed flag.
       store.destroy();
     };
   }, [storageKey, store]);

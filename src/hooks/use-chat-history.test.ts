@@ -161,6 +161,23 @@ describe('createChatHistoryStore', () => {
       expect(store.appendMessage({ role: 'user', content: 'x' })).toBe('');
       expect(store.getSnapshot()).toEqual([]);
     });
+
+    it('allows resubscribe after destroy (Astro ClientRouter swap simulation)', () => {
+      const store = makeStore();
+      store.appendMessage({ role: 'user', content: 'hello' });
+      store.appendMessage({ role: 'assistant', content: 'hi' });
+
+      // Simulate Astro ClientRouter unmount: destroy then resubscribe
+      store.destroy();
+      const cb = vi.fn();
+      store.subscribe(cb);
+
+      // Store should be usable again
+      const id = store.appendMessage({ role: 'user', content: 'again' });
+      expect(id).toBeTruthy();
+      expect(store.getSnapshot()).toHaveLength(3);
+      expect(cb).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('validateMessages', () => {
