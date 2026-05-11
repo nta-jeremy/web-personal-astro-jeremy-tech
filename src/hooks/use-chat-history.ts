@@ -9,7 +9,6 @@ export interface ChatMessage {
 interface StoreOptions {
   maxMessages?: number;
   storageKey?: string;
-  broadcastChannelName?: string;
 }
 
 interface StoreReturn {
@@ -50,47 +49,15 @@ const storeCache = new Map<string, StoreReturn>();
 export function createChatHistoryStore(options: StoreOptions = {}): StoreReturn {
   const maxMessages = options.maxMessages ?? 50;
   const storageKey = options.storageKey ?? 'jeremy-chat-history';
-  const broadcastChannelName = options.broadcastChannelName ?? 'jeremy-chat-sync';
 
   let messages: ChatMessage[] = [];
   let listeners: (() => void)[] = [];
   let destroyed = false;
 
-  // BroadcastChannel primary
-  let bc: BroadcastChannel | null = null;
-  if (typeof BroadcastChannel !== 'undefined') {
-    try {
-      bc = new BroadcastChannel(broadcastChannelName);
-      bc.addEventListener('message', (ev) => {
-        if (destroyed) return;
-        const data = ev.data as { storageKey?: string; messages?: unknown[] } | undefined;
-        if (data?.storageKey === storageKey && Array.isArray(data.messages)) {
-          messages = validateMessages(data.messages);
-          notify();
-        }
-      });
-    } catch {
-      // BroadcastChannel not available
-    }
-  }
-
-  // Safari fallback: storage event
-  function onStorage(ev: StorageEvent) {
-    if (destroyed) return;
-    if (ev.key === storageKey) {
-      messages = ev.newValue ? validateMessages(JSON.parse(ev.newValue)) : [];
-      notify();
-    }
-  }
-
-  if (typeof window !== 'undefined') {
-    window.addEventListener('storage', onStorage);
-  }
-
   function load() {
-    if (typeof localStorage === 'undefined') return;
+    if (typeof sessionStorage === 'undefined') return;
     try {
-      const raw = localStorage.getItem(storageKey);
+      const raw = sessionStorage.getItem(storageKey);
       if (raw) {
         messages = validateMessages(JSON.parse(raw));
       }
@@ -103,30 +70,23 @@ export function createChatHistoryStore(options: StoreOptions = {}): StoreReturn 
     listeners.forEach((l) => l());
   }
 
-  function saveAndBroadcast() {
-    if (typeof localStorage === 'undefined' || destroyed) return;
+  function save() {
+    if (typeof sessionStorage === 'undefined' || destroyed) return;
     const trimmed = messages.slice(-maxMessages);
     messages = trimmed;
     try {
-      localStorage.setItem(storageKey, JSON.stringify(messages));
+      sessionStorage.setItem(storageKey, JSON.stringify(messages));
     } catch {
       // Storage quota exceeded or disabled
     }
     notify();
-    if (bc) {
-      try {
-        bc.postMessage({ storageKey, messages });
-      } catch {
-        // ignore
-      }
-    }
   }
 
   function appendMessage(msg: Omit<ChatMessage, 'id'>): string {
     if (destroyed) return '';
     const id = generateId();
     messages = [...messages, { ...msg, id }];
-    saveAndBroadcast();
+    save();
     return id;
   }
 
@@ -141,26 +101,19 @@ export function createChatHistoryStore(options: StoreOptions = {}): StoreReturn 
   }
 
   function persist() {
-    saveAndBroadcast();
+    save();
   }
 
   function clearHistory() {
     messages = [];
-    if (typeof localStorage !== 'undefined') {
+    if (typeof sessionStorage !== 'undefined') {
       try {
-        localStorage.removeItem(storageKey);
+        sessionStorage.removeItem(storageKey);
       } catch {
         // ignore
       }
     }
     notify();
-    if (bc) {
-      try {
-        bc.postMessage({ storageKey, messages: [] });
-      } catch {
-        // ignore
-      }
-    }
   }
 
   function subscribe(cb: () => void): () => void {
@@ -173,17 +126,6 @@ export function createChatHistoryStore(options: StoreOptions = {}): StoreReturn 
   function destroy() {
     destroyed = true;
     listeners = [];
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('storage', onStorage);
-    }
-    if (bc) {
-      try {
-        bc.close();
-      } catch {
-        // ignore
-      }
-      bc = null;
-    }
   }
 
   // Load on creation
@@ -204,7 +146,7 @@ export function createChatHistoryStore(options: StoreOptions = {}): StoreReturn 
 export function useChatHistory(options: StoreOptions = {}) {
   const storageKey = options.storageKey ?? 'jeremy-chat-history';
 
-  // Singleton per key within a tab to avoid duplicate BroadcastChannels / listeners
+  // Singleton per key within a tab to avoid duplicate listeners
   const storeRef = useRef<StoreReturn | null>(null);
   if (!storeRef.current) {
     if (storeCache.has(storageKey)) {

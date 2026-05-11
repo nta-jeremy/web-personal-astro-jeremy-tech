@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { useChatHistory, type ChatMessage } from '../../hooks/use-chat-history';
-
-type Message = ChatMessage;
+import { useChatHistory } from '../../hooks/use-chat-history';
 
 interface Props {
   placeholder?: string;

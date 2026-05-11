@@ -2,17 +2,11 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { createChatHistoryStore, type ChatMessage } from './use-chat-history';
 
 let mockStorage: Record<string, string> = {};
-let bcInstances: Array<{
-  name: string;
-  listeners: ((e: MessageEvent) => void)[];
-  onmessage: ((e: MessageEvent) => void) | null;
-}> = [];
 
 beforeEach(() => {
   mockStorage = {};
-  bcInstances = [];
 
-  global.localStorage = {
+  global.sessionStorage = {
     getItem: (key: string) => mockStorage[key] ?? null,
     setItem: (key: string, value: string) => {
       mockStorage[key] = value;
@@ -26,44 +20,6 @@ beforeEach(() => {
     length: 0,
     key: () => null,
   } as Storage;
-
-  global.BroadcastChannel = class {
-    name: string;
-    onmessage: ((e: MessageEvent) => void) | null = null;
-    listeners: ((e: MessageEvent) => void)[] = [];
-
-    constructor(name: string) {
-      this.name = name;
-      bcInstances.push(this as unknown as (typeof bcInstances)[number]);
-    }
-
-    postMessage(data: unknown) {
-      const ev = { data } as MessageEvent;
-      // Broadcast to OTHER instances with same name (real BC does not echo to sender)
-      bcInstances.forEach((inst) => {
-        if (inst.name === this.name && inst !== (this as unknown as (typeof bcInstances)[number])) {
-          inst.listeners.forEach((l) => l(ev));
-          if (inst.onmessage) inst.onmessage(ev);
-        }
-      });
-    }
-
-    addEventListener(type: string, cb: (e: MessageEvent) => void) {
-      if (type === 'message') this.listeners.push(cb);
-    }
-
-    removeEventListener(type: string, cb: (e: MessageEvent) => void) {
-      this.listeners = this.listeners.filter((l) => l !== cb);
-    }
-
-    close() {
-      bcInstances = bcInstances.filter((i) => i !== (this as unknown as (typeof bcInstances)[number]));
-    }
-  } as unknown as typeof BroadcastChannel;
-
-  (globalThis as any).window = globalThis;
-  (globalThis as any).window.addEventListener = vi.fn();
-  (globalThis as any).window.removeEventListener = vi.fn();
 });
 
 afterEach(() => {
@@ -84,14 +40,14 @@ function seedMessages(count: number): ChatMessage[] {
 
 describe('createChatHistoryStore', () => {
   describe('mount / load', () => {
-    it('reads existing messages from localStorage on creation', () => {
+    it('reads existing messages from sessionStorage on creation', () => {
       const existing = seedMessages(2);
       mockStorage['test-chat'] = JSON.stringify(existing);
       const store = makeStore();
       expect(store.getSnapshot()).toEqual(existing);
     });
 
-    it('returns empty array when localStorage is empty', () => {
+    it('returns empty array when sessionStorage is empty', () => {
       const store = makeStore();
       expect(store.getSnapshot()).toEqual([]);
     });
@@ -104,7 +60,7 @@ describe('createChatHistoryStore', () => {
   });
 
   describe('appendMessage', () => {
-    it('appends a message and saves to localStorage', () => {
+    it('appends a message and saves to sessionStorage', () => {
       const store = makeStore();
       const id = store.appendMessage({ role: 'user', content: 'hi' });
       expect(id).toBeTruthy();
@@ -135,7 +91,7 @@ describe('createChatHistoryStore', () => {
   });
 
   describe('updateMessageContent', () => {
-    it('updates content in-memory without writing to localStorage', () => {
+    it('updates content in-memory without writing to sessionStorage', () => {
       const store = makeStore();
       const id = store.appendMessage({ role: 'assistant', content: '' });
       mockStorage['test-chat'] = ''; // clear to detect writes
@@ -151,7 +107,7 @@ describe('createChatHistoryStore', () => {
   });
 
   describe('persist', () => {
-    it('writes current state to localStorage', () => {
+    it('writes current state to sessionStorage', () => {
       const store = makeStore();
       const id = store.appendMessage({ role: 'assistant', content: '' });
       mockStorage['test-chat'] = '';
@@ -163,7 +119,7 @@ describe('createChatHistoryStore', () => {
   });
 
   describe('clearHistory', () => {
-    it('removes all messages and localStorage key', () => {
+    it('removes all messages and sessionStorage key', () => {
       const store = makeStore();
       store.appendMessage({ role: 'user', content: 'hello' });
       store.clearHistory();
@@ -198,55 +154,18 @@ describe('createChatHistoryStore', () => {
     });
   });
 
-  describe('BroadcastChannel sync', () => {
-    it('updates state when another tab sends messages via BroadcastChannel', () => {
-      const storeA = makeStore();
-      storeA.appendMessage({ role: 'user', content: 'from-a' });
-
-      // Simulate another tab posting to the same channel
-      const bc = bcInstances.find((i) => i.name === 'jeremy-chat-sync');
-      expect(bc).toBeTruthy();
-
-      const storeB = makeStore();
-      const cb = vi.fn();
-      storeB.subscribe(cb);
-
-      const newMsgs = [{ id: 'remote-1', role: 'user', content: 'remote' }];
-      (bc as unknown as InstanceType<typeof BroadcastChannel>).postMessage({
-        storageKey: 'test-chat',
-        messages: newMsgs,
-      });
-
-      expect(storeB.getSnapshot()).toEqual(newMsgs);
-      expect(cb).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('storage event fallback', () => {
-    it('listens to window storage events as fallback', () => {
-      const store = makeStore();
-      expect((globalThis as any).window.addEventListener).toHaveBeenCalledWith('storage', expect.any(Function));
-    });
-  });
-
   describe('destroy', () => {
-    it('removes storage listeners and prevents further operations', () => {
+    it('prevents further operations after destroy', () => {
       const store = makeStore();
       store.destroy();
       expect(store.appendMessage({ role: 'user', content: 'x' })).toBe('');
       expect(store.getSnapshot()).toEqual([]);
     });
-
-    it('closes BroadcastChannel on destroy', () => {
-      const store = makeStore();
-      store.destroy();
-      expect(bcInstances).toHaveLength(0);
-    });
   });
 
   describe('validateMessages', () => {
     it('ignores corrupt entries missing required fields', () => {
-      const store = makeStore();
+      makeStore();
       mockStorage['test-chat'] = JSON.stringify([
         { id: 'a', role: 'user', content: 'ok' },
         { id: 'b', role: 'user' },
