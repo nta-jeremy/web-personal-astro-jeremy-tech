@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useChatHistory, type ChatMessage } from '../../hooks/use-chat-history';
 
-interface Message {
-  role: 'user' | 'assistant';
-  content: string;
-}
+type Message = ChatMessage;
 
 interface Props {
   placeholder?: string;
@@ -20,7 +18,7 @@ export default function ChatInterface({
   onClose,
   isPanel = false,
 }: Props) {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const { messages, appendMessage, updateMessageContent, persist } = useChatHistory();
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -46,8 +44,7 @@ export default function ChatInterface({
     setInput('');
     setLoading(true);
 
-    const userMsg: Message = { role: 'user', content: text };
-    setMessages((prev) => [...prev, userMsg]);
+    appendMessage({ role: 'user', content: text });
 
     abortRef.current = new AbortController();
 
@@ -73,7 +70,7 @@ export default function ChatInterface({
       let buffer = '';
       let assistantContent = '';
 
-      setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
+      const assistantId = appendMessage({ role: 'assistant', content: '' });
 
       while (true) {
         const { done, value } = await reader.read();
@@ -90,16 +87,15 @@ export default function ChatInterface({
           if (data === '[DONE]') continue;
 
           assistantContent += data + ' ';
-          setMessages((prev) => {
-            const next = [...prev];
-            const last = next[next.length - 1];
-            if (last && last.role === 'assistant') {
-              last.content = assistantContent.trim();
-            }
-            return next;
-          });
+          try {
+            updateMessageContent(assistantId, assistantContent.trim());
+          } catch {
+            // ignore race / stale ID
+          }
         }
       }
+
+      persist();
     } catch (err) {
       if ((err as Error).name !== 'AbortError') {
         const msg =
@@ -164,9 +160,9 @@ export default function ChatInterface({
           </div>
         )}
 
-        {messages.map((msg, i) => (
+        {messages.map((msg) => (
           <div
-            key={i}
+            key={msg.id}
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
