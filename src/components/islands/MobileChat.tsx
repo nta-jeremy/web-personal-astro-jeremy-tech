@@ -56,6 +56,17 @@ export default function MobileChat({
     };
   }, [open]);
 
+  // Warn on page reload/close while chat is open
+  useEffect(() => {
+    if (!open) return;
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, [open]);
+
   if (open) {
     return (
       <div className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg)]">

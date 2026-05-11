@@ -32,6 +32,17 @@ export default function DesktopChatWidget({
     }
   }, [open, handleClose]);
 
+  // Warn on page reload/close while chat is open
+  useEffect(() => {
+    if (!open) return;
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, [open]);
+
   // Close on click outside panel
   const onBackdropClick = useCallback(
     (e: React.MouseEvent) => {
