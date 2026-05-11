@@ -50,7 +50,7 @@ const site = 'https://jeremytech.io.vn';
 const canonical = `${site}${archivePath}${slugify(post.id)}/`;
 ---
 
-<Layout title={data.title} description={data.description}>
+<Layout title={data.title} description={data.description} canonicalUrl={data.canonicalUrl}>
   <JsonLd
     schema="article"
     data={{

@@ -57,6 +57,7 @@ const canonical = `${site}${archivePath}${slugify(post.id)}/`;
   ogDescription={data.description}
   image={data.image || '/og-default.png'}
   type="article"
+  canonicalUrl={data.canonicalUrl}
   publishedDate={new Date(data.pubDate).toISOString()}
   modifiedDate={data.updatedDate ? new Date(data.updatedDate).toISOString() : new Date(data.pubDate).toISOString()}
   tags={data.tags}

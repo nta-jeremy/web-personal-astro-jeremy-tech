@@ -1,33 +1,16 @@
 {
   "domains": [
-    "Kiến trúc Neural",
-    "Ngữ nghĩa Giao diện",
-    "Công nghệ Sổ cái Phân tán",
-    "Hệ thống Thiết kế Biên tập",
-    "Kỹ thuật Prompt",
-    "Lý thuyết Đồ thị",
-    "Nhân trắc học Nhận thức"
-  ],
-  "timeline": [
-    {
-      "year": "2024",
-      "title": "Product Engineer & Solo Builder",
-      "desc": "Xây dựng các sản phẩm AI-native từ đầu đến cuối và tư vấn kiến trúc hệ thống."
-    },
-    {
-      "year": "2021",
-      "title": "Senior Software Engineer (Fullstack)",
-      "desc": "Ship các hệ thống production xuyên suốt frontend, backend, và hạ tầng quy mô lớn."
-    },
-    {
-      "year": "2019",
-      "title": "Software Engineer (Fullstack)",
-      "desc": "Xây dựng hệ thống dữ liệu thời gian thực và nền tảng API cho sản phẩm giai đoạn đầu."
-    },
-    {
-      "year": "2017",
-      "title": "Junior Developer",
-      "desc": "Làm quen với web stack và công cụ ML inference."
-    }
+    "React",
+    "Vue.js",
+    "Go",
+    "Node.js",
+    "PostgreSQL",
+    "Kafka",
+    "Elasticsearch",
+    "Redis",
+    "AWS",
+    "Docker",
+    "System Design",
+    "Microservices"
   ]
 }

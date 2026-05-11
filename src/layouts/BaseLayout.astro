@@ -16,6 +16,7 @@ export interface Props {
   image?: string;
   type?: string;
   noindex?: boolean;
+  canonicalUrl?: string;
   ogTitle?: string;
   ogDescription?: string;
   ogImageAlt?: string;
@@ -31,6 +32,7 @@ const {
   image,
   type,
   noindex,
+  canonicalUrl,
   ogTitle,
   ogDescription,
   ogImageAlt,
@@ -63,7 +65,7 @@ const hreflang = [
       description={description}
       image={image}
       type={type}
-      canonicalUrl={canonical}
+      canonicalUrl={canonicalUrl || canonical}
       hreflang={hreflang}
       noindex={noindex}
       ogTitle={ogTitle}

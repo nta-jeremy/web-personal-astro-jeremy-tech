@@ -2,8 +2,8 @@ import type { APIContext } from 'astro';
 import { z } from 'zod';
 import { checkRateLimit } from '@domains/chat/infrastructure/rate-limit-adapter';
 import { sendMessageWithFallback } from '@domains/chat/infrastructure/ai-provider-adapter';
-import contextEn from '@data/jeremy-context.json';
-import contextVi from '@data/jeremy-context-vi.json';
+import contextEn from '@data/jeremy.json';
+import contextVi from '@data/jeremy-vi.json';
 
 export const prerender = false;
 
@@ -40,7 +40,8 @@ function blocklistCheck(input: string): boolean {
 }
 
 function buildContext(lang: 'en' | 'vi'): string {
-  const data = lang === 'vi' ? contextVi : contextEn;
+  const raw = lang === 'vi' ? contextVi : contextEn;
+  const data = raw.context;
   const projects = data.projects
     .map(
       (p) =>

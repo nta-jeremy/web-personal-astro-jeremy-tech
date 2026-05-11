@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/BaseLayout.astro';
 import { getTranslations, t } from '@/i18n/utils';
-import aboutData from '@/data/about-vi.json';
-import careerData from '@/data/career-vi.json';
+import aboutData from '@/data/jeremy-vi.json';
+import careerData from '@/data/jeremy-vi.json';
 import AboutBio from '@components/sections/AboutBio.astro';
 import AboutPhilosophy from '@components/sections/AboutPhilosophy.astro';
 import AboutDomains from '@components/sections/AboutDomains.astro';
@@ -15,8 +15,8 @@ const translations = getTranslations(locale as 'en' | 'vi');
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Jeremy Nguyen',
-  jobTitle: 'Product Engineer / Solo Builder',
+  name: 'Nguyen Tung Anh (Jeremy Nguyen)',
+  jobTitle: 'Software Engineer | Technical Leader',
   url: SITE_URL,
   sameAs: SAME_AS,
 };
@@ -27,7 +27,7 @@ const personSchema = {
     <AboutBio translations={translations} />
     <AboutPhilosophy translations={translations} />
     <AboutDomains translations={translations} domains={aboutData.domains} />
-    <AboutTimeline translations={translations} timeline={careerData.timeline} />
+    <AboutTimeline translations={translations} timeline={careerData.career.timeline} />
   </div>
 
   <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
