@@ -13,11 +13,13 @@ const RequestSchema = z.object({
 });
 
 function getClientIP(request: Request): string {
+  const cfIP = request.headers.get('cf-connecting-ip');
+  if (cfIP) return cfIP;
   const forwarded = request.headers.get('x-forwarded-for');
   if (forwarded) {
     return forwarded.split(',')[0].trim();
   }
-  return request.headers.get('cf-connecting-ip') || 'unknown';
+  return 'unknown';
 }
 
 function sanitizeInput(input: string): string {
@@ -62,6 +64,14 @@ function buildContext(lang: 'en' | 'vi'): string {
 
 export async function POST(context: APIContext): Promise<Response> {
   const { request } = context;
+
+  const contentLength = request.headers.get('content-length');
+  if (contentLength && parseInt(contentLength, 10) > 10000) {
+    return new Response(
+      JSON.stringify({ error: 'Payload too large' }),
+      { status: 413, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 
   let body: unknown;
   try {
