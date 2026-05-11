@@ -10,9 +10,10 @@ export default defineConfig({
   site: 'https://jeremytech.io.vn',
   output: 'static',
   adapter: cloudflare({
-    mode: 'directory',
-    functionPerRoute: true,
     imageService: 'compile',
+    platformProxy: {
+      enabled: true,
+    },
   }),
   integrations: [react(), mdx(), sitemap(), pagefind()],
   compressHTML: true,

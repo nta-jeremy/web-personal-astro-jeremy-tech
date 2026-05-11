@@ -39,6 +39,11 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Verify build output
+        run: |
+          ls -la dist/
+          test -f dist/_worker.js/index.js || { echo "Error: dist/_worker.js/index.js missing"; exit 1; }
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:

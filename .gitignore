@@ -42,6 +42,8 @@ yarn.lock
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example
+.dev.vars
+.dev.vars.*
 
 # vercel
 .vercel
