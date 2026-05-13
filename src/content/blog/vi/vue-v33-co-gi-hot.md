@@ -5,6 +5,7 @@ pubDate: 2023-07-21
 category: 'Frontend Development'
 tags: ['Vue', 'JavaScript', 'Frontend']
 draft: false
+hidden: true
 locale: 'vi'
 readingTime: 3
 canonicalUrl: 'https://viblo.asia/p/vue-v33-co-gi-hot'

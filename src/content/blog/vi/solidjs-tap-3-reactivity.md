@@ -5,6 +5,7 @@ pubDate: 2023-02-10
 category: 'Frontend Development'
 tags: ['SolidJS', 'JavaScript', 'Frontend']
 draft: false
+hidden: true
 locale: 'vi'
 readingTime: 7
 canonicalUrl: 'https://viblo.asia/p/solidjs-tap-3-reactivity'

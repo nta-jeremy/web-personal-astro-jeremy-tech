@@ -5,6 +5,7 @@ pubDate: 2023-02-13
 category: 'Frontend Development'
 tags: ['SolidJS', 'JavaScript', 'Frontend']
 draft: false
+hidden: true
 locale: 'vi'
 readingTime: 6
 canonicalUrl: 'https://viblo.asia/p/solidjs-tap-4-lifecycle'

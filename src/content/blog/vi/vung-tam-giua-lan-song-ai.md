@@ -5,6 +5,7 @@ pubDate: 2026-03-21
 category: 'AI & Tương Lai'
 tags: ['AI', 'career', 'mindset']
 draft: false
+hidden: true
 locale: 'vi'
 readingTime: 7
 canonicalUrl: 'https://jeremynguyen252.substack.com/p/vung-tam-giua-lan-song-ai'

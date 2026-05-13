@@ -5,6 +5,7 @@ pubDate: 2026-04-05
 category: 'Công Nghệ & Tương Lai'
 tags: ['technology', 'future', 'reflection']
 draft: false
+hidden: true
 locale: 'vi'
 readingTime: 8
 canonicalUrl: 'https://jeremynguyen252.substack.com/p/iem-ky-di-cong-nghe'
