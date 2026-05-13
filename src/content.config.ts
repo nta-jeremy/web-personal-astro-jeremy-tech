@@ -11,6 +11,7 @@ const blog = defineCollection({
     category: z.string(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    hidden: z.boolean().default(false),
     image: z.string().optional(),
     readingTime: z.number().optional(),
     locale: z.enum(['en', 'vi']).default('en'),

@@ -12,7 +12,7 @@ const translations = getTranslations(locale);
 const allPosts = await getCollection('blog');
 
 const posts = allPosts
-  .filter((p) => !p.data.draft && p.data.locale === locale)
+  .filter((p) => !p.data.draft && !p.data.hidden && p.data.locale === locale)
   .sort(
     (a, b) =>
       new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()

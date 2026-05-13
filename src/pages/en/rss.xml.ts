@@ -4,7 +4,7 @@ import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
   const posts = await getCollection('blog', ({ data }) => {
-    return !data.draft && data.locale === 'en';
+    return !data.draft && !data.hidden && data.locale === 'en';
   });
 
   posts.sort((a, b) => {

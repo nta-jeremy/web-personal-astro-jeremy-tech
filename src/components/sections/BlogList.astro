@@ -11,7 +11,7 @@ const { locale } = Astro.props;
 const translations = getTranslations(locale);
 
 const posts = await getCollection('blog', ({ data }) => {
-  return !data.draft && data.locale === locale;
+  return !data.draft && !data.hidden && data.locale === locale;
 });
 
 posts.sort((a, b) => {

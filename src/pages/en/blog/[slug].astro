@@ -6,7 +6,7 @@ import JsonLd from '@components/seo/JsonLd.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => {
-    return !data.draft && data.locale === 'en';
+    return !data.draft && !data.hidden && data.locale === 'en';
   });
 
   return posts.map((post) => {
@@ -23,7 +23,7 @@ const locale = data.locale as 'en' | 'vi';
 const translations = getTranslations(locale);
 
 const allPosts = await getCollection('blog', ({ data: d }) => {
-  return !d.draft && d.locale === locale;
+  return !d.draft && !d.hidden && d.locale === locale;
 });
 
 allPosts.sort((a, b) => {
